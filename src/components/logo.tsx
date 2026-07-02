@@ -7,7 +7,7 @@ export function Logo({ className = "h-10 w-auto" }: { className?: string }) {
       alt="FitForge"
       width={1024}
       height={1024}
-      className={className}
+      className={`bg-transparent object-contain ${className}`}
       priority
     />
   );
