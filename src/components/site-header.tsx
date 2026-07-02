@@ -11,12 +11,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-forge-border/80 bg-forge-black/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-8 w-8" />
-          <span className="text-lg font-extrabold tracking-tight">
-            <span className="text-forge-slate">Fit</span>
-            <span className="text-forge-orange">Forge</span>
-          </span>
+        <Link href="/" className="flex items-center">
+          <Logo className="h-9 w-auto" />
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((item) => (

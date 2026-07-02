@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     title: "FitForge",
     description: "Forja tu mejor versión",
     type: "website",
+    images: [{ url: "/logo.png", width: 1024, height: 1024, alt: "FitForge" }],
+  },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
 };
 

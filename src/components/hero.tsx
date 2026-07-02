@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "./logo";
 
 export function Hero() {
   return (
@@ -6,6 +7,7 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,102,34,0.18)_0%,_transparent_55%)]" />
       <div className="relative mx-auto max-w-6xl">
         <div className="max-w-3xl">
+          <Logo className="mb-8 h-24 w-auto md:h-32" />
           <p className="mb-4 inline-flex rounded-full border border-forge-orange/30 bg-forge-orange/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-forge-orange">
             Entrena · Progresa · Compite
           </p>
