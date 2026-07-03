@@ -1,13 +1,20 @@
 import Link from "next/link";
-import { AuthPlaceholder } from "@/components/auth-placeholder";
+import { AuthFormShell } from "@/components/auth-form-shell";
 
 export const metadata = {
   title: "Iniciar sesión",
 };
 
-export default function LoginPage() {
+type Props = {
+  searchParams: Promise<{ redirect?: string }>;
+};
+
+export default async function LoginPage({ searchParams }: Props) {
+  const { redirect } = await searchParams;
+
   return (
-    <AuthPlaceholder
+    <AuthFormShell
+      mode="login"
       title="Iniciar sesión"
       subtitle="Usa el mismo email y contraseña que en la app móvil."
       alternate={
@@ -19,7 +26,7 @@ export default function LoginPage() {
         </>
       }
       primaryCta="Iniciar sesión"
-      note="Próximo paso: conectar Supabase Auth (mismo proyecto que la app Flutter)."
+      redirectTo={redirect ?? "/account"}
     />
   );
 }

@@ -1,21 +1,22 @@
 import Link from "next/link";
-import { AuthPlaceholder } from "@/components/auth-placeholder";
+import { AuthFormShell } from "@/components/auth-form-shell";
 
 export const metadata = {
   title: "Crear cuenta",
 };
 
 type Props = {
-  searchParams: Promise<{ plan?: string }>;
+  searchParams: Promise<{ plan?: string; redirect?: string }>;
 };
 
 export default async function SignupPage({ searchParams }: Props) {
-  const { plan } = await searchParams;
+  const { plan, redirect } = await searchParams;
   const planLabel =
     plan === "pro" ? "Pro" : plan === "pro_plus" ? "Pro+" : "Free";
 
   return (
-    <AuthPlaceholder
+    <AuthFormShell
+      mode="signup"
       title="Crear cuenta"
       subtitle={`Registro para plan ${planLabel}. La misma cuenta funcionará en web y app.`}
       alternate={
@@ -27,7 +28,7 @@ export default async function SignupPage({ searchParams }: Props) {
         </>
       }
       primaryCta="Crear cuenta"
-      note="Próximo paso: Supabase signUp + verificación de email si la activas."
+      redirectTo={redirect ?? "/account"}
     />
   );
 }

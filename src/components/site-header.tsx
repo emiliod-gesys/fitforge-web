@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./logo";
+import { SignOutButton } from "./sign-out-button";
+import { createClient } from "@/lib/supabase/server";
 
 const NAV = [
   { href: "/#features", label: "Funciones" },
@@ -7,7 +9,12 @@ const NAV = [
   { href: "/download", label: "Descargar" },
 ];
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <header className="sticky top-0 z-50 border-b border-forge-border/80 bg-forge-black/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -26,18 +33,32 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <Link
-            href="/login"
-            className="hidden text-sm font-medium text-forge-muted transition hover:text-forge-text sm:inline"
-          >
-            Iniciar sesión
-          </Link>
-          <Link
-            href="/signup"
-            className="rounded-lg bg-forge-orange px-4 py-2 text-sm font-semibold text-white transition hover:bg-forge-orange-dark"
-          >
-            Empezar gratis
-          </Link>
+          {user ? (
+            <>
+              <Link
+                href="/account"
+                className="hidden text-sm font-medium text-forge-muted transition hover:text-forge-text sm:inline"
+              >
+                Mi cuenta
+              </Link>
+              <SignOutButton className="hidden text-sm font-medium text-forge-muted transition hover:text-forge-text sm:inline" />
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="hidden text-sm font-medium text-forge-muted transition hover:text-forge-text sm:inline"
+              >
+                Iniciar sesión
+              </Link>
+              <Link
+                href="/signup"
+                className="rounded-lg bg-forge-orange px-4 py-2 text-sm font-semibold text-white transition hover:bg-forge-orange-dark"
+              >
+                Empezar gratis
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>
