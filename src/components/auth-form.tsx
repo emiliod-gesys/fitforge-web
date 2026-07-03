@@ -70,6 +70,7 @@ export function AuthForm({
   const [captchaToken, setCaptchaToken] = useState<string | null>(
     turnstileSiteKey ? null : "",
   );
+  const [captchaError, setCaptchaError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(
@@ -89,9 +90,15 @@ export function AuthForm({
       }
       widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
         sitekey: turnstileSiteKey,
-        callback: (token) => setCaptchaToken(token),
+        callback: (token) => {
+          setCaptchaToken(token);
+          setCaptchaError(false);
+        },
         "expired-callback": () => setCaptchaToken(null),
-        "error-callback": () => setCaptchaToken(null),
+        "error-callback": () => {
+          setCaptchaToken(null);
+          setCaptchaError(true);
+        },
       });
     };
 
@@ -268,7 +275,17 @@ export function AuthForm({
           />
         </div>
 
-        {needsCaptcha && <div ref={turnstileRef} className="min-h-[65px]" />}
+        {needsCaptcha && (
+          <>
+            <div ref={turnstileRef} className="min-h-[65px]" />
+            {captchaError && (
+              <p className="text-sm text-amber-300">
+                No se pudo cargar la verificación. Si usas WARP/1.1.1.1, desactívalo
+                temporalmente o recarga la página.
+              </p>
+            )}
+          </>
+        )}
 
         {error && (
           <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
