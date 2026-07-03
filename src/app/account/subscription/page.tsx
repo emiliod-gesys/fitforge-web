@@ -32,6 +32,8 @@ export default function AccountSubscriptionPage() {
         <ul className="mt-4 space-y-3">
           {PLANS.map((plan) => {
             const isCurrent = plan.id === currentPlanId;
+            const showUpgrade =
+              !isCurrent && (plan.id === "pro" || plan.id === "pro_plus");
 
             return (
               <li
@@ -62,7 +64,7 @@ export default function AccountSubscriptionPage() {
                     </span>
                   </p>
                 </div>
-                {!isCurrent && plan.id !== "free" && (
+                {showUpgrade && (
                   <button
                     type="button"
                     disabled
