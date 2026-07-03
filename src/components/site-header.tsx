@@ -8,9 +8,9 @@ import type { User } from "@supabase/supabase-js";
 const NAV = [
   { href: "/#app", label: "App" },
   { href: "/#features", label: "Funciones" },
-  { href: "/#leaderboards", label: "Rankings" },
   { href: "/#pricing", label: "Planes" },
   { href: "/download", label: "Descargar" },
+  { href: "/#leaderboards", label: "Rankings" },
 ];
 
 export async function SiteHeader() {

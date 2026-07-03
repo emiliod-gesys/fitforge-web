@@ -1,13 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
-import { isSupabaseConfigured } from "@/lib/supabase/env";
 import {
   LEADERBOARD_METRICS,
   LEADERBOARD_PERIODS,
   formatLeaderboardValue,
-  leaderboardRpcParams,
   parseLeaderboardResult,
   rankColor,
 } from "@/lib/leaderboard";
@@ -64,23 +61,29 @@ export function LeaderboardSection() {
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(async () => {
-    if (!isSupabaseConfigured()) {
-      setError("Leaderboards no disponibles (Supabase sin configurar).");
-      setLoading(false);
-      return;
-    }
-
     setLoading(true);
     setError(null);
 
     try {
-      const supabase = createClient();
-      const { data, error: rpcError } = await supabase.rpc(
-        "get_leaderboard",
-        leaderboardRpcParams({ metric, period, scope: "global", limit: 25 }),
-      );
+      const params = new URLSearchParams({
+        metric,
+        period,
+        scope: "global",
+        limit: "25",
+      });
+      const response = await fetch(`/api/leaderboard?${params}`);
 
-      if (rpcError) throw rpcError;
+      if (!response.ok) {
+        const body = (await response.json().catch(() => null)) as {
+          error?: string;
+        } | null;
+        throw new Error(
+          body?.error ??
+            "No se pudo cargar el ranking. Verifica las variables de Supabase en Vercel y redeploy.",
+        );
+      }
+
+      const data = await response.json();
       setResult(parseLeaderboardResult(data));
     } catch (err) {
       setError(err instanceof Error ? err.message : "No se pudo cargar el ranking");
@@ -95,7 +98,7 @@ export function LeaderboardSection() {
   }, [load]);
 
   return (
-    <section id="leaderboards" className="border-t border-forge-border px-6 py-20">
+    <section id="leaderboards" className="border-t border-forge-border bg-forge-black px-6 py-20">
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-forge-orange">

@@ -12,7 +12,6 @@ export default function HomePage() {
       <Hero />
       <AppScreenshotsSection />
       <FeatureGrid />
-      <LeaderboardSection />
       <PricingSection />
       <DownloadSection />
       <section className="border-t border-forge-border bg-forge-surface px-6 py-16">
@@ -37,6 +36,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <LeaderboardSection />
     </>
   );
 }
