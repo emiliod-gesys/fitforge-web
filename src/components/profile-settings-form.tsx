@@ -25,6 +25,21 @@ const ACTIVITY_LEVELS = [
   { value: "high", label: "Alto" },
 ] as const;
 
+const GENDER_LABELS: Record<string, string> = {
+  male: "Masculino",
+  female: "Femenino",
+  non_binary: "No binario",
+  prefer_not_to_say: "Prefiero no decir",
+};
+
+function formatWeightKg(kg: number | null | undefined): string {
+  if (kg == null || Number.isNaN(kg)) return "—";
+  return new Intl.NumberFormat("es", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(kg);
+}
+
 type Props = {
   profile: UserProfile;
   email: string;
@@ -33,11 +48,6 @@ type Props = {
 export function ProfileSettingsForm({ profile, email }: Props) {
   const router = useRouter();
   const [displayName, setDisplayName] = useState(profile.display_name ?? "");
-  const [age, setAge] = useState(profile.age?.toString() ?? "");
-  const [gender, setGender] = useState(profile.gender ?? "");
-  const [heightCm, setHeightCm] = useState(profile.height_cm?.toString() ?? "");
-  const [bodyWeight, setBodyWeight] = useState(profile.body_weight?.toString() ?? "");
-  const [unitSystem, setUnitSystem] = useState(profile.unit_system);
   const [preferredLanguage, setPreferredLanguage] = useState(profile.preferred_language);
   const [fitnessGoal, setFitnessGoal] = useState(profile.fitness_goal ?? "");
   const [experienceLevel, setExperienceLevel] = useState(profile.experience_level ?? "intermedio");
@@ -45,6 +55,10 @@ export function ProfileSettingsForm({ profile, email }: Props) {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const genderLabel = profile.gender
+    ? (GENDER_LABELS[profile.gender] ?? profile.gender)
+    : "Sin especificar";
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -60,11 +74,6 @@ export function ProfileSettingsForm({ profile, email }: Props) {
       .update({
         display_name: trimmedName || null,
         search_name: trimmedName ? trimmedName.toLowerCase() : null,
-        age: age ? Number(age) : null,
-        gender: gender || null,
-        height_cm: heightCm ? Number(heightCm) : null,
-        body_weight: bodyWeight ? Number(bodyWeight) : null,
-        unit_system: unitSystem,
         preferred_language: preferredLanguage,
         fitness_goal: fitnessGoal || null,
         experience_level: experienceLevel || null,
@@ -86,7 +95,7 @@ export function ProfileSettingsForm({ profile, email }: Props) {
 
   const inputClass =
     "w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-orange focus:ring-2";
-  const labelClass = "mb-1.5 block text-sm font-medium";
+  const readOnlyClass = `${inputClass} opacity-60`;
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
@@ -94,7 +103,7 @@ export function ProfileSettingsForm({ profile, email }: Props) {
         <label className={labelClass} htmlFor="email">
           Email
         </label>
-        <input id="email" type="email" value={email} disabled className={`${inputClass} opacity-60`} />
+        <input id="email" type="email" value={email} disabled className={readOnlyClass} />
       </div>
 
       <div>
@@ -111,6 +120,11 @@ export function ProfileSettingsForm({ profile, email }: Props) {
         />
       </div>
 
+      <div className="rounded-xl border border-forge-border bg-forge-card/50 px-4 py-3 text-sm text-forge-muted">
+        Las métricas corporales solo se editan en la app móvil (Perfil → composición
+        corporal). Aquí puedes consultarlas.
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label className={labelClass} htmlFor="age">
@@ -118,30 +132,17 @@ export function ProfileSettingsForm({ profile, email }: Props) {
           </label>
           <input
             id="age"
-            type="number"
-            min={1}
-            max={119}
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            className={inputClass}
+            type="text"
+            value={profile.age ?? "—"}
+            disabled
+            className={readOnlyClass}
           />
         </div>
         <div>
           <label className={labelClass} htmlFor="gender">
             Género
           </label>
-          <select
-            id="gender"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            className={inputClass}
-          >
-            <option value="">Sin especificar</option>
-            <option value="male">Masculino</option>
-            <option value="female">Femenino</option>
-            <option value="non_binary">No binario</option>
-            <option value="prefer_not_to_say">Prefiero no decir</option>
-          </select>
+          <input id="gender" type="text" value={genderLabel} disabled className={readOnlyClass} />
         </div>
       </div>
 
@@ -152,59 +153,39 @@ export function ProfileSettingsForm({ profile, email }: Props) {
           </label>
           <input
             id="height"
-            type="number"
-            min={50}
-            max={280}
-            value={heightCm}
-            onChange={(e) => setHeightCm(e.target.value)}
-            className={inputClass}
+            type="text"
+            value={profile.height_cm ?? "—"}
+            disabled
+            className={readOnlyClass}
           />
         </div>
         <div>
           <label className={labelClass} htmlFor="weight">
-            Peso ({unitSystem})
+            Peso (kg)
           </label>
           <input
             id="weight"
-            type="number"
-            min={1}
-            step="0.1"
-            value={bodyWeight}
-            onChange={(e) => setBodyWeight(e.target.value)}
-            className={inputClass}
+            type="text"
+            value={formatWeightKg(profile.body_weight)}
+            disabled
+            className={readOnlyClass}
           />
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className={labelClass} htmlFor="units">
-            Unidades
-          </label>
-          <select
-            id="units"
-            value={unitSystem}
-            onChange={(e) => setUnitSystem(e.target.value as "kg" | "lb")}
-            className={inputClass}
-          >
-            <option value="kg">Kilogramos (kg)</option>
-            <option value="lb">Libras (lb)</option>
-          </select>
-        </div>
-        <div>
-          <label className={labelClass} htmlFor="language">
-            Idioma
-          </label>
-          <select
-            id="language"
-            value={preferredLanguage}
-            onChange={(e) => setPreferredLanguage(e.target.value as "es" | "en")}
-            className={inputClass}
-          >
-            <option value="es">Español</option>
-            <option value="en">English</option>
-          </select>
-        </div>
+      <div>
+        <label className={labelClass} htmlFor="language">
+          Idioma
+        </label>
+        <select
+          id="language"
+          value={preferredLanguage}
+          onChange={(e) => setPreferredLanguage(e.target.value as "es" | "en")}
+          className={inputClass}
+        >
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
       </div>
 
       <div>
@@ -287,3 +268,5 @@ export function ProfileSettingsForm({ profile, email }: Props) {
     </form>
   );
 }
+
+const labelClass = "mb-1.5 block text-sm font-medium";
