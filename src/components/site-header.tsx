@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Logo } from "./logo";
 import { SignOutButton } from "./sign-out-button";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/env";
+import type { User } from "@supabase/supabase-js";
 
 const NAV = [
   { href: "/#features", label: "Funciones" },
@@ -10,10 +12,15 @@ const NAV = [
 ];
 
 export async function SiteHeader() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user: User | null = null;
+
+  if (isSupabaseConfigured()) {
+    const supabase = await createClient();
+    const {
+      data: { user: authUser },
+    } = await supabase.auth.getUser();
+    user = authUser;
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-forge-border/80 bg-forge-black/80 backdrop-blur-md">
