@@ -1,16 +1,11 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { SignOutButton } from "@/components/sign-out-button";
-import { PLANS } from "@/lib/plans";
 import { createClient } from "@/lib/supabase/server";
+import { playerLevelFromXp } from "@/lib/format";
+import type { UserProfile } from "@/lib/types";
 
 export const metadata = {
-  title: "Mi suscripción",
-};
-
-type Profile = {
-  display_name: string | null;
-  email: string | null;
+  title: "Resumen",
 };
 
 export default async function AccountPage() {
@@ -25,9 +20,9 @@ export default async function AccountPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("display_name, email")
+    .select("*")
     .eq("id", user.id)
-    .maybeSingle<Profile>();
+    .maybeSingle<UserProfile>();
 
   const displayName =
     profile?.display_name ??
@@ -35,45 +30,50 @@ export default async function AccountPage() {
     user.email?.split("@")[0] ??
     "Usuario";
 
-  return (
-    <div className="mx-auto max-w-2xl px-6 py-16">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold">Mi cuenta</h1>
-          <p className="mt-2 text-forge-muted">
-            Hola, {displayName}. Gestiona tu plan Free, Pro o Pro+.
-          </p>
-        </div>
-        <SignOutButton />
-      </div>
+  const level = playerLevelFromXp(profile?.total_xp ?? 0);
 
-      <div className="mt-10 rounded-2xl border border-forge-border bg-forge-card p-6">
-        <p className="text-sm font-medium text-forge-muted">Sesión activa</p>
-        <p className="mt-1 text-lg font-semibold">{user.email}</p>
-        <p className="mt-4 text-sm text-forge-muted">
-          Plan actual: <span className="font-medium text-forge-text">Free</span>{" "}
-          (Stripe en la siguiente fase)
+  return (
+    <div className="space-y-6">
+      <div>
+        <p className="text-forge-muted">Hola, {displayName}</p>
+        <p className="mt-1 text-sm text-forge-muted">
+          Gestiona tu perfil y tu suscripción desde aquí.
         </p>
       </div>
 
-      <div className="mt-10">
-        <h2 className="text-lg font-semibold">Planes disponibles</h2>
-        <ul className="mt-4 space-y-3">
-          {PLANS.map((plan) => (
-            <li
-              key={plan.id}
-              className="flex items-center justify-between rounded-xl border border-forge-border px-4 py-3 text-sm"
-            >
-              <span className="font-medium">{plan.name}</span>
-              <span className="text-forge-muted">{plan.price}</span>
-            </li>
-          ))}
-        </ul>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="rounded-2xl border border-forge-border bg-forge-card p-5">
+          <p className="text-sm text-forge-muted">Nivel</p>
+          <p className="mt-1 text-2xl font-bold text-forge-orange">{level}</p>
+          <p className="mt-1 text-xs text-forge-muted">
+            {(profile?.total_xp ?? 0).toLocaleString("es")} XP total
+          </p>
+        </div>
+        <div className="rounded-2xl border border-forge-border bg-forge-card p-5">
+          <p className="text-sm text-forge-muted">Plan</p>
+          <p className="mt-1 text-2xl font-bold">Free</p>
+          <p className="mt-1 text-xs text-forge-muted">Stripe próximamente</p>
+        </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
         <Link
-          href="/#pricing"
-          className="mt-6 inline-block text-sm text-forge-orange hover:underline"
+          href="/account/profile"
+          className="rounded-xl border border-forge-border bg-forge-card p-5 transition hover:border-forge-orange/50"
         >
-          Ver detalles de planes →
+          <p className="font-semibold">Configuración del perfil</p>
+          <p className="mt-1 text-sm text-forge-muted">
+            Nombre, objetivos, unidades y datos personales.
+          </p>
+        </Link>
+        <Link
+          href="/account/subscription"
+          className="rounded-xl border border-forge-border bg-forge-card p-5 transition hover:border-forge-orange/50"
+        >
+          <p className="font-semibold">Suscripción</p>
+          <p className="mt-1 text-sm text-forge-muted">
+            Ver plan actual y opciones Pro / Pro+.
+          </p>
         </Link>
       </div>
     </div>

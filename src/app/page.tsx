@@ -1,14 +1,18 @@
 import Link from "next/link";
+import { AppScreenshotsSection } from "@/components/app-screenshots-section";
 import { DownloadSection } from "@/components/download-section";
 import { FeatureGrid } from "@/components/feature-grid";
 import { Hero } from "@/components/hero";
+import { LeaderboardSection } from "@/components/leaderboard-section";
 import { PricingSection } from "@/components/pricing-section";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <AppScreenshotsSection />
       <FeatureGrid />
+      <LeaderboardSection />
       <PricingSection />
       <DownloadSection />
       <section className="border-t border-forge-border bg-forge-surface px-6 py-16">
