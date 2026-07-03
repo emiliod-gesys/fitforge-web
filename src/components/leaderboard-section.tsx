@@ -8,6 +8,7 @@ import {
   parseLeaderboardResult,
   rankColor,
 } from "@/lib/leaderboard";
+import { ProfileAvatar } from "@/components/profile-avatar";
 import type {
   LeaderboardEntry,
   LeaderboardMetric,
@@ -37,9 +38,11 @@ function LeaderboardRow({
       <span className={`w-8 text-center text-sm font-bold ${rankColor(entry.rank)}`}>
         {entry.rank}
       </span>
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-forge-elevated text-sm font-bold text-forge-muted">
-        {name.charAt(0).toUpperCase()}
-      </div>
+      <ProfileAvatar
+        avatarUrl={entry.avatar_url}
+        displayName={name}
+        size={40}
+      />
       <div className="min-w-0 flex-1">
         <p className="truncate font-medium">{name}</p>
         {entry.is_current_user && (

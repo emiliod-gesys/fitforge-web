@@ -6,10 +6,10 @@ export function Hero() {
     <section className="relative overflow-hidden px-6 pb-20 pt-16 md:pb-28 md:pt-24">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,102,34,0.18)_0%,_transparent_55%)]" />
       <div className="relative mx-auto max-w-6xl">
+        <div className="mb-10 flex justify-center">
+          <Logo className="h-96 w-auto max-w-full md:h-[32rem]" />
+        </div>
         <div className="max-w-3xl">
-          <div className="mb-10 flex justify-center">
-            <Logo className="h-96 w-auto max-w-full md:h-[32rem]" />
-          </div>
           <p className="mb-4 inline-flex rounded-full border border-forge-orange/30 bg-forge-orange/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-forge-orange">
             Entrena · Progresa · Compite
           </p>
