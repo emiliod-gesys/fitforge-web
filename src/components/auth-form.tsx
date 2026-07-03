@@ -198,7 +198,7 @@ export function AuthForm({
     const supabase = createClient();
     const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: getResetPasswordUrl(),
-      captaptchaToken: needsCaptcha && captchaToken ? captchaToken : undefined,
+      captchaToken: needsCaptcha && captchaToken ? captchaToken : undefined,
     });
     setLoading(false);
 
