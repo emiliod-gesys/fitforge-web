@@ -18,6 +18,11 @@ export type Dictionary = {
     downloadCta: string;
     signupCta: string;
   };
+  catalog: {
+    value: string;
+    label: string;
+    description: string;
+  };
   app: {
     eyebrow: string;
     title: string;
@@ -144,6 +149,12 @@ const es: Dictionary = {
     downloadCta: "Descargar app",
     signupCta: "Crear cuenta web",
   },
+  catalog: {
+    value: "+1.300",
+    label: "ejercicios en el catálogo",
+    description:
+      "Fuerza, máquina, libre, cardio y más — listos para armar rutinas y entrenar con precisión.",
+  },
   app: {
     eyebrow: "La app",
     title: "FORGEN en tu bolsillo",
@@ -159,7 +170,7 @@ const es: Dictionary = {
       coach: {
         label: "Coach IA",
         description:
-          "Chat con tu historial y perfil. Genera rutinas y consejos con tu propia API key (OpenAI, Gemini o Claude); la clave queda en tu dispositivo.",
+          "Pide rutinas personalizadas, consejos y propuestas de alimentación. El coach usa tu historial y métricas en tiempo real.",
       },
       nutrition: {
         label: "Nutrición",
@@ -184,7 +195,7 @@ const es: Dictionary = {
       profile: {
         label: "Perfil",
         description:
-          "Datos, métricas, metas, nutrición, apariencia, API keys y cuenta.",
+          "Datos, métricas, metas, nutrición, apariencia y cuenta.",
       },
     },
   },
@@ -201,9 +212,9 @@ const es: Dictionary = {
       },
       {
         id: "coach",
-        title: "Coach IA (tu clave)",
+        title: "Coach IA",
         description:
-          "Usa OpenAI, Gemini o Claude con tu API key. Privacidad en el dispositivo; límites diarios según plan.",
+          "Pide rutinas personalizadas, consejos de entrenamiento y propuestas de alimentación — siempre con tus métricas en tiempo real. Límites diarios según plan.",
       },
       {
         id: "nutrition",
@@ -246,8 +257,6 @@ const es: Dictionary = {
           "Hasta 10 rutinas",
           "Coach IA: 5 mensajes/día",
           "Entrenar, comida (búsqueda, quick, manual), agua, progreso y social",
-          "Con API key propia (BYOK): IA proactiva, foto IA y Coach sin tope",
-          "Barcode de comida bloqueado en Free",
         ],
         cta: "Crear cuenta gratis",
       },
@@ -259,10 +268,9 @@ const es: Dictionary = {
         features: [
           "Hasta 20 rutinas",
           "Coach IA: 30 mensajes/día",
-          "IA proactiva",
+          "IA proactiva: interviene en tus entrenos para sugerir series, pesos y reps y mantener el progreso en cada sesión",
           "Color de acento personalizable",
           "Código de barras para comida",
-          "Sin foto IA ni modo entrenador",
         ],
         cta: "Unirse a la lista",
       },
@@ -275,7 +283,7 @@ const es: Dictionary = {
           "Hasta 50 rutinas",
           "Coach IA ilimitado",
           "Todo lo de Gymrat",
-          "Foto de comida con IA",
+          "Detectar calorías en la comida con fotos",
           "Modo entrenador (alumnos)",
         ],
         cta: "Unirse a la lista",
@@ -356,6 +364,12 @@ const en: Dictionary = {
     downloadCta: "Download app",
     signupCta: "Create web account",
   },
+  catalog: {
+    value: "1,300+",
+    label: "exercises in the catalog",
+    description:
+      "Strength, machines, free weights, cardio, and more — ready to build routines and train with precision.",
+  },
   app: {
     eyebrow: "The app",
     title: "FORGEN in your pocket",
@@ -371,7 +385,7 @@ const en: Dictionary = {
       coach: {
         label: "AI Coach",
         description:
-          "Chat with your history and profile. Generate routines and tips with your own API key (OpenAI, Gemini, or Claude) — the key stays on your device.",
+          "Ask for personalized routines, training tips, and nutrition ideas. The coach uses your history and real-time metrics.",
       },
       nutrition: {
         label: "Nutrition",
@@ -396,7 +410,7 @@ const en: Dictionary = {
       profile: {
         label: "Profile",
         description:
-          "Details, metrics, goals, nutrition, appearance, API keys, and account.",
+          "Details, metrics, goals, nutrition, appearance, and account.",
       },
     },
   },
@@ -413,9 +427,9 @@ const en: Dictionary = {
       },
       {
         id: "coach",
-        title: "AI Coach (your key)",
+        title: "AI Coach",
         description:
-          "Use OpenAI, Gemini, or Claude with your API key. On-device privacy; daily limits by plan.",
+          "Ask for personalized routines, training advice, and nutrition proposals — always using your real-time metrics. Daily limits by plan.",
       },
       {
         id: "nutrition",
@@ -458,8 +472,6 @@ const en: Dictionary = {
           "Up to 10 routines",
           "AI Coach: 5 messages/day",
           "Train, food (search, quick, manual), water, progress, and social",
-          "With your own API key (BYOK): proactive AI, AI photo, and unlimited Coach",
-          "Food barcode locked on Free",
         ],
         cta: "Create free account",
       },
@@ -471,10 +483,9 @@ const en: Dictionary = {
         features: [
           "Up to 20 routines",
           "AI Coach: 30 messages/day",
-          "Proactive AI",
+          "Proactive AI: steps into your workouts to suggest sets, weights, and reps so you keep progressing each session",
           "Custom accent color",
           "Food barcode scanning",
-          "No AI food photo or trainer mode",
         ],
         cta: "Join the waitlist",
       },
@@ -487,7 +498,7 @@ const en: Dictionary = {
           "Up to 50 routines",
           "Unlimited AI Coach",
           "Everything in Gymrat",
-          "AI food photo",
+          "Detect calories in food with photos",
           "Trainer mode (students)",
         ],
         cta: "Join the waitlist",

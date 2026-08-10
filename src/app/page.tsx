@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AppScreenshotsSection } from "@/components/app-screenshots-section";
+import { CatalogHighlight } from "@/components/catalog-highlight";
 import { DownloadSection } from "@/components/download-section";
 import { FeatureGrid } from "@/components/feature-grid";
 import { Hero } from "@/components/hero";
@@ -15,6 +16,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <CatalogHighlight />
       <AppScreenshotsSection />
       <FeatureGrid />
       <PricingSection />
