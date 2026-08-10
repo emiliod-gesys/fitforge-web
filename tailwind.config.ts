@@ -8,7 +8,7 @@ const config: Config = {
         forge: {
           black: "#000000",
           navy: "#163159",
-          blue: "#325995",
+          blue: "#305890",
           "blue-dark": "#274878",
           charcoal: "#343339",
           grey: "#6d6e70",
@@ -23,7 +23,7 @@ const config: Config = {
         },
       },
       boxShadow: {
-        glow: "0 10px 40px rgba(50, 89, 149, 0.35)",
+        glow: "0 10px 40px rgba(48, 88, 144, 0.35)",
       },
       fontFamily: {
         sans: ["var(--font-lexend)", "system-ui", "sans-serif"],

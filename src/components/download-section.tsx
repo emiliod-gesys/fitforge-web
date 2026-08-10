@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useDictionary } from "@/components/locale-provider";
 
 export function DownloadSection() {
+  const dict = useDictionary();
   const playStore =
     process.env.NEXT_PUBLIC_PLAY_STORE_URL ??
     "https://play.google.com/store/apps/details?id=io.fitforge.fitforge";
@@ -9,10 +13,8 @@ export function DownloadSection() {
   return (
     <section id="download" className="border-t border-forge-border bg-forge-navy/40 px-6 py-20">
       <div className="mx-auto max-w-4xl text-center">
-        <h2 className="text-3xl font-bold md:text-4xl">Descarga Forgen</h2>
-        <p className="mt-4 text-forge-muted">
-          Disponible en Android. iOS próximamente.
-        </p>
+        <h2 className="text-3xl font-bold md:text-4xl">{dict.download.title}</h2>
+        <p className="mt-4 text-forge-muted">{dict.download.subtitle}</p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href={playStore}
@@ -28,15 +30,15 @@ export function DownloadSection() {
             rel="noopener noreferrer"
             className="inline-flex min-w-[200px] items-center justify-center gap-2 rounded-xl border border-forge-border bg-forge-card px-6 py-4 font-semibold text-forge-muted transition hover:border-forge-grey"
           >
-            <span aria-hidden>🍎</span> App Store (pronto)
+            <span aria-hidden>🍎</span> {dict.download.appStoreSoon}
           </a>
         </div>
         <p className="mt-6 text-sm text-forge-muted">
-          ¿Ya tienes cuenta?{" "}
+          {dict.download.hasAccount}{" "}
           <Link href="/login" className="text-forge-blue hover:underline">
-            Inicia sesión
+            {dict.download.signInLink}
           </Link>{" "}
-          con el mismo email que en la app.
+          {dict.download.sameEmail}
         </p>
       </div>
     </section>

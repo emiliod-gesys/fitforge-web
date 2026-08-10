@@ -1,48 +1,21 @@
-const FEATURES = [
-  {
-    title: "Entrenos inteligentes",
-    description: "Registra series, peso y RIR con temporizador de descanso integrado.",
-    icon: "🏋️",
-  },
-  {
-    title: "Coach IA",
-    description: "Recomendaciones personalizadas con tu propia API key de OpenAI o Gemini.",
-    icon: "✨",
-  },
-  {
-    title: "Progreso real",
-    description: "PRs, volumen semanal, composición corporal y milestones desbloqueables.",
-    icon: "📈",
-  },
-  {
-    title: "Recuperación muscular",
-    description: "Mapa visual de fatiga para saber qué entrenar cada día.",
-    icon: "🧠",
-  },
-  {
-    title: "Social & rankings",
-    description: "Amigos, leaderboards y emblemas de nivel de Bronce a Inmortal.",
-    icon: "🏆",
-  },
-  {
-    title: "Nutrición",
-    description: "Registro de comidas y macros para complementar tu entrenamiento.",
-    icon: "🥗",
-  },
-];
+"use client";
+
+import { useDictionary } from "@/components/locale-provider";
 
 export function FeatureGrid() {
+  const dict = useDictionary();
+
   return (
     <section id="features" className="border-t border-forge-border bg-forge-surface px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <h2 className="text-center text-3xl font-bold md:text-4xl">
-          Todo lo que necesitas en un solo lugar
+          {dict.features.title}
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-forge-muted">
-          Diseñada para quienes entrenan en serio, sin complicar lo esencial.
+          {dict.features.subtitle}
         </p>
         <div className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((feature) => (
+          {dict.features.items.map((feature) => (
             <article key={feature.title} className="border-t border-forge-border/80 pt-6">
               <span className="text-3xl" aria-hidden>
                 {feature.icon}

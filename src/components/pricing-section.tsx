@@ -1,16 +1,27 @@
+"use client";
+
 import Link from "next/link";
-import { PLANS } from "@/lib/plans";
+import { useDictionary } from "@/components/locale-provider";
 
 export function PricingSection() {
+  const dict = useDictionary();
+  const plans = [
+    { id: "free" as const, ...dict.pricing.plans.free, highlighted: false },
+    { id: "pro" as const, ...dict.pricing.plans.pro, highlighted: true },
+    { id: "pro_plus" as const, ...dict.pricing.plans.proPlus, highlighted: false },
+  ];
+
   return (
     <section id="pricing" className="px-6 py-20">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-center text-3xl font-bold md:text-4xl">Elige tu plan</h2>
+        <h2 className="text-center text-3xl font-bold md:text-4xl">
+          {dict.pricing.title}
+        </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-forge-muted">
-          Empieza gratis. Sube a Gymrat o Gymrat Pro cuando quieras más potencia.
+          {dict.pricing.subtitle}
         </p>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {PLANS.map((plan) => (
+          {plans.map((plan) => (
             <article
               key={plan.id}
               className={`relative flex flex-col rounded-2xl border p-6 ${
@@ -21,7 +32,7 @@ export function PricingSection() {
             >
               {plan.highlighted && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-forge-gold px-3 py-0.5 text-xs font-bold text-forge-black">
-                  Popular
+                  {dict.pricing.popular}
                 </span>
               )}
               <h3 className="text-xl font-bold">{plan.name}</h3>
@@ -39,7 +50,7 @@ export function PricingSection() {
                 ))}
               </ul>
               <Link
-                href={plan.id === "free" ? "/signup" : "/signup?plan=" + plan.id}
+                href={plan.id === "free" ? "/signup" : `/signup?plan=${plan.id}`}
                 className={`mt-8 block rounded-xl py-3 text-center text-sm font-semibold transition ${
                   plan.highlighted
                     ? "bg-forge-blue text-white hover:bg-forge-blue-dark"

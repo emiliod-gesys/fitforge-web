@@ -1,14 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  LEADERBOARD_METRICS,
-  LEADERBOARD_PERIODS,
   formatLeaderboardValue,
   parseLeaderboardResult,
   rankColor,
 } from "@/lib/leaderboard";
 import { ProfileAvatar } from "@/components/profile-avatar";
+import { useDictionary } from "@/components/locale-provider";
 import type {
   LeaderboardEntry,
   LeaderboardMetric,
@@ -20,12 +19,26 @@ function LeaderboardRow({
   entry,
   metric,
   period,
+  youLabel,
+  userFallback,
+  levelLabel,
 }: {
   entry: LeaderboardEntry;
   metric: LeaderboardMetric;
   period: LeaderboardPeriod;
+  youLabel: string;
+  userFallback: string;
+  levelLabel: string;
 }) {
-  const name = entry.display_name ?? "Usuario";
+  const name = entry.display_name ?? userFallback;
+  const rawValue = formatLeaderboardValue(metric, entry, period);
+  const displayValue =
+    metric === "level" && period === "all"
+      ? (() => {
+          const num = rawValue.match(/\d+/)?.[0];
+          return num ? `${levelLabel} ${num}` : rawValue;
+        })()
+      : rawValue;
 
   return (
     <li
@@ -46,22 +59,50 @@ function LeaderboardRow({
       <div className="min-w-0 flex-1">
         <p className="truncate font-medium">{name}</p>
         {entry.is_current_user && (
-          <p className="text-xs text-forge-blue">Tú</p>
+          <p className="text-xs text-forge-blue">{youLabel}</p>
         )}
       </div>
       <p className="shrink-0 text-sm font-semibold text-forge-blue">
-        {formatLeaderboardValue(metric, entry, period)}
+        {displayValue}
       </p>
     </li>
   );
 }
 
 export function LeaderboardSection() {
+  const dict = useDictionary();
   const [metric, setMetric] = useState<LeaderboardMetric>("level");
   const [period, setPeriod] = useState<LeaderboardPeriod>("all");
   const [result, setResult] = useState<LeaderboardResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const periods = useMemo(
+    () =>
+      (
+        [
+          { id: "week" as const, label: dict.leaderboards.periods.week },
+          { id: "month" as const, label: dict.leaderboards.periods.month },
+          { id: "all" as const, label: dict.leaderboards.periods.all },
+        ]
+      ),
+    [dict],
+  );
+
+  const metrics = useMemo(
+    () =>
+      (
+        [
+          { id: "level" as const, label: dict.leaderboards.metrics.level },
+          { id: "volume" as const, label: dict.leaderboards.metrics.volume },
+          { id: "workouts" as const, label: dict.leaderboards.metrics.workouts },
+          { id: "calories" as const, label: dict.leaderboards.metrics.calories },
+          { id: "distance" as const, label: dict.leaderboards.metrics.distance },
+          { id: "reps" as const, label: dict.leaderboards.metrics.reps },
+        ]
+      ),
+    [dict],
+  );
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -105,18 +146,16 @@ export function LeaderboardSection() {
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-forge-blue">
-            Comunidad
+            {dict.leaderboards.eyebrow}
           </p>
           <h2 className="mt-2 text-3xl font-bold md:text-4xl">
-            Clasificaciones globales
+            {dict.leaderboards.title}
           </h2>
-          <p className="mt-3 text-forge-muted">
-            Compite con atletas de todo el mundo. Los mismos rankings que en la app.
-          </p>
+          <p className="mt-3 text-forge-muted">{dict.leaderboards.subtitle}</p>
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-2">
-          {LEADERBOARD_PERIODS.map((item) => (
+          {periods.map((item) => (
             <button
               key={item.id}
               type="button"
@@ -133,7 +172,7 @@ export function LeaderboardSection() {
         </div>
 
         <div className="mt-4 flex flex-wrap justify-center gap-2">
-          {LEADERBOARD_METRICS.map((item) => (
+          {metrics.map((item) => (
             <button
               key={item.id}
               type="button"
@@ -151,7 +190,9 @@ export function LeaderboardSection() {
 
         <div className="mt-8">
           {loading && (
-            <p className="text-center text-sm text-forge-muted">Cargando ranking…</p>
+            <p className="text-center text-sm text-forge-muted">
+              {dict.leaderboards.loading}
+            </p>
           )}
 
           {error && !loading && (
@@ -162,7 +203,7 @@ export function LeaderboardSection() {
 
           {!loading && !error && result && result.entries.length === 0 && (
             <p className="text-center text-sm text-forge-muted">
-              Aún no hay datos en este ranking. ¡Sé el primero en entrenar!
+              {dict.leaderboards.empty}
             </p>
           )}
 
@@ -174,6 +215,9 @@ export function LeaderboardSection() {
                   entry={entry}
                   metric={metric}
                   period={period}
+                  youLabel={dict.leaderboards.you}
+                  userFallback={dict.leaderboards.userFallback}
+                  levelLabel={dict.leaderboards.levelLabel}
                 />
               ))}
             </ul>
@@ -182,12 +226,15 @@ export function LeaderboardSection() {
           {!loading && result?.current_user_outside_top && (
             <div className="mt-6">
               <p className="mb-2 text-center text-xs font-semibold uppercase tracking-wide text-forge-muted">
-                Tu posición
+                {dict.leaderboards.yourPosition}
               </p>
               <LeaderboardRow
                 entry={result.current_user_outside_top}
                 metric={metric}
                 period={period}
+                youLabel={dict.leaderboards.you}
+                userFallback={dict.leaderboards.userFallback}
+                levelLabel={dict.leaderboards.levelLabel}
               />
             </div>
           )}

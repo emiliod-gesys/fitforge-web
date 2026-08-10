@@ -1,11 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "./logo";
+import { useDictionary } from "@/components/locale-provider";
 
 export function Hero() {
+  const dict = useDictionary();
+
   return (
     <section className="relative overflow-hidden px-6 pb-24 pt-14 md:pb-32 md:pt-20">
       <div
-        className="pointer-events-none absolute inset-0 animate-atmosphere bg-[radial-gradient(ellipse_at_top,_rgba(50,89,149,0.28)_0%,_transparent_58%)]"
+        className="pointer-events-none absolute inset-0 animate-atmosphere bg-[radial-gradient(ellipse_at_top,_rgba(48,88,144,0.28)_0%,_transparent_58%)]"
         aria-hidden
       />
       <div
@@ -23,12 +28,11 @@ export function Hero() {
         </div>
 
         <h1 className="mt-10 animate-fade-up text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl [animation-delay:120ms]">
-          Forja tu mejor versión
+          {dict.hero.title}
         </h1>
 
         <p className="mt-5 max-w-xl animate-fade-up text-lg text-forge-muted md:text-xl [animation-delay:240ms]">
-          Rutinas inteligentes, coach con IA y comunidad para mantenerte
-          consistente — todo en Forgen.
+          {dict.hero.subtitle}
         </p>
 
         <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-4 [animation-delay:360ms]">
@@ -36,13 +40,13 @@ export function Hero() {
             href="/download"
             className="rounded-xl bg-forge-blue px-7 py-3.5 font-semibold text-white shadow-glow transition hover:bg-forge-blue-dark"
           >
-            Descargar app
+            {dict.hero.downloadCta}
           </Link>
           <Link
             href="/signup"
             className="rounded-xl border border-forge-border bg-forge-charcoal/60 px-7 py-3.5 font-semibold text-forge-text transition hover:border-forge-blue/60"
           >
-            Crear cuenta web
+            {dict.hero.signupCta}
           </Link>
         </div>
       </div>
