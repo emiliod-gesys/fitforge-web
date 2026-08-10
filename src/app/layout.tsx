@@ -15,14 +15,14 @@ const lexend = Lexend({
 
 export const metadata: Metadata = {
   title: {
-    default: "FORGEN — Forja tu mejor versión",
+    default: "FORGEN — Forge Your Potential",
     template: "%s | FORGEN",
   },
   description:
-    "App móvil de fitness: entrenamiento, nutrición, progreso, social y coach con IA. Gym, carrera y HYROX. Disponible en Android; iOS próximamente.",
+    "App móvil de fitness con más de 1.300 ejercicios: entrenamiento, nutrición, progreso, social y coach con IA. Gym, carrera y HYROX. Disponible en Android; iOS próximamente.",
   openGraph: {
     title: "FORGEN",
-    description: "Forja tu mejor versión — entrenas, comes, mides y te impulsas con IA y comunidad.",
+    description: "Forge Your Potential — entrenas, comes, mides y te impulsas con IA y comunidad.",
     type: "website",
     images: [{ url: "/logo.png", width: 1024, height: 1024, alt: "FORGEN" }],
   },

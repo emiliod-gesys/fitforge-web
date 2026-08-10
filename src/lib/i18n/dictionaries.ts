@@ -36,7 +36,11 @@ export type Dictionary = {
   features: {
     title: string;
     subtitle: string;
-    items: { title: string; description: string; icon: string }[];
+    items: {
+      id: "train" | "coach" | "nutrition" | "progress" | "social" | "trainer";
+      title: string;
+      description: string;
+    }[];
   };
   pricing: {
     title: string;
@@ -134,7 +138,7 @@ const es: Dictionary = {
     getStarted: "Empezar gratis",
   },
   hero: {
-    title: "Forja tu mejor versión",
+    title: "Forge Your Potential",
     subtitle:
       "Entrena, come, mide tu progreso e impúlsate con IA y comunidad — gym, carrera y HYROX en un solo lugar.",
     downloadCta: "Descargar app",
@@ -150,7 +154,7 @@ const es: Dictionary = {
       train: {
         label: "Entrenar",
         description:
-          "Hub del día: racha, sugerencia de sesión, rutinas, mapa de recuperación muscular y registro de series con peso, reps y RIR.",
+          "Hub del día: racha, sugerencia de sesión, rutinas, mapa de recuperación y registro de series. Catálogo con más de 1.300 ejercicios.",
       },
       coach: {
         label: "Coach IA",
@@ -190,60 +194,60 @@ const es: Dictionary = {
       "Entrenamiento, comida, progreso, social e IA — pensado para gym y outdoors.",
     items: [
       {
+        id: "train",
         title: "Gym, carrera y HYROX",
         description:
-          "Rutinas propias o sugeridas, sesión en vivo, cardio con GPS y estaciones HYROX en el mismo flujo.",
-        icon: "🏋️",
+          "Más de 1.300 ejercicios en el catálogo. Rutinas propias o sugeridas, sesión en vivo, cardio con GPS y estaciones HYROX.",
       },
       {
+        id: "coach",
         title: "Coach IA (tu clave)",
         description:
           "Usa OpenAI, Gemini o Claude con tu API key. Privacidad en el dispositivo; límites diarios según plan.",
-        icon: "✨",
       },
       {
+        id: "nutrition",
         title: "Nutrición e hidratación",
         description:
           "Presupuesto calórico, macros, agua y kcal activas de tus entrenos — alineado a tus métricas.",
-        icon: "🥗",
       },
       {
+        id: "progress",
         title: "Progreso que se siente",
         description:
           "XP y rangos, PRs, hitos, volumen semanal y mapa de recuperación muscular.",
-        icon: "📈",
       },
       {
+        id: "social",
         title: "Comunidad real",
         description:
           "Amigos, feed efímero, PRs compartidos y leaderboards — motivación más allá del tracking solitario.",
-        icon: "🏆",
       },
       {
+        id: "trainer",
         title: "Modo entrenador",
         description:
           "Gestiona alumnos: recuperación, nutrición del día y rutinas personalizadas.",
-        icon: "🎓",
       },
     ],
   },
   pricing: {
     title: "Elige tu plan",
     subtitle:
-      "Empieza gratis. Gymrat y Gymrat Pro amplían límites de rutinas e IA (hay límites diarios salvo plan ampliado).",
+      "Empieza gratis. Gymrat y Gymrat Pro amplían rutinas, Coach IA y funciones premium.",
     popular: "Popular",
     plans: {
       free: {
         name: "Gratuito",
         price: "$0",
         period: "para siempre",
-        description: "Entrena, registra y compite con lo esencial.",
+        description: "Entrena, come y compite con lo esencial.",
         features: [
-          "Entrenos, rutinas e historial",
-          "Progreso, PRs y recuperación",
-          "Nutrición e hidratación",
-          "Social, feed y leaderboards",
-          "Coach IA con límites diarios",
+          "Hasta 10 rutinas",
+          "Coach IA: 5 mensajes/día",
+          "Entrenar, comida (búsqueda, quick, manual), agua, progreso y social",
+          "Con API key propia (BYOK): IA proactiva, foto IA y Coach sin tope",
+          "Barcode de comida bloqueado en Free",
         ],
         cta: "Crear cuenta gratis",
       },
@@ -251,12 +255,14 @@ const es: Dictionary = {
         name: "Gymrat",
         price: "Próximamente",
         period: "/ mes",
-        description: "Más potencia de IA y herramientas para romper mesetas.",
+        description: "Más rutinas, más Coach IA y extras de experiencia.",
         features: [
-          "Todo lo de Gratuito",
-          "Más uso de Coach IA",
-          "Generación de rutinas con IA",
-          "Más capacidad de rutinas guardadas",
+          "Hasta 20 rutinas",
+          "Coach IA: 30 mensajes/día",
+          "IA proactiva",
+          "Color de acento personalizable",
+          "Código de barras para comida",
+          "Sin foto IA ni modo entrenador",
         ],
         cta: "Unirse a la lista",
       },
@@ -264,12 +270,13 @@ const es: Dictionary = {
         name: "Gymrat Pro",
         price: "Próximamente",
         period: "/ mes",
-        description: "El paquete completo para atletas y entrenadores.",
+        description: "Máximo de rutinas, Coach ilimitado y modo entrenador.",
         features: [
+          "Hasta 50 rutinas",
+          "Coach IA ilimitado",
           "Todo lo de Gymrat",
-          "Nutrición avanzada con IA",
-          "Modo entrenador / alumnos",
-          "Soporte prioritario",
+          "Foto de comida con IA",
+          "Modo entrenador (alumnos)",
         ],
         cta: "Unirse a la lista",
       },
@@ -284,9 +291,9 @@ const es: Dictionary = {
     sameEmail: "con el mismo email que en la app.",
   },
   cta: {
-    title: "¿Listo para forjar tu mejor versión?",
+    title: "¿Listo para empezar?",
     subtitle:
-      "Crea tu cuenta y descarga la app. El producto es móvil; la web es tu puerta de entrada.",
+      "Crea tu cuenta y descarga la app. Forge Your Potential — el producto es móvil; la web es tu puerta de entrada.",
     createAccount: "Crear cuenta",
     downloadApp: "Descargar app",
   },
@@ -313,7 +320,7 @@ const es: Dictionary = {
   },
   footer: {
     tagline:
-      "Forja tu mejor versión. Entrenas, comes, mides y te impulsas con IA y comunidad — en un solo lugar.",
+      "Forge Your Potential. Entrenas, comes, mides y te impulsas con IA y comunidad — en un solo lugar.",
     product: "Producto",
     account: "Cuenta",
     download: "Descargar",
@@ -343,7 +350,7 @@ const en: Dictionary = {
     getStarted: "Start free",
   },
   hero: {
-    title: "Forge your best self",
+    title: "Forge Your Potential",
     subtitle:
       "Train, eat, track progress, and push forward with AI and community — gym, running, and HYROX in one place.",
     downloadCta: "Download app",
@@ -359,7 +366,7 @@ const en: Dictionary = {
       train: {
         label: "Train",
         description:
-          "Daily hub: streak, suggested session, routines, muscle recovery map, and logging sets with weight, reps, and RIR.",
+          "Daily hub: streak, suggested session, routines, recovery map, and set logging. Catalog with 1,300+ exercises.",
       },
       coach: {
         label: "AI Coach",
@@ -399,60 +406,60 @@ const en: Dictionary = {
       "Training, food, progress, social, and AI — built for the gym and outdoors.",
     items: [
       {
+        id: "train",
         title: "Gym, running & HYROX",
         description:
-          "Your own or suggested routines, live sessions, GPS cardio, and HYROX stations in one flow.",
-        icon: "🏋️",
+          "1,300+ exercises in the catalog. Your own or suggested routines, live sessions, GPS cardio, and HYROX stations.",
       },
       {
+        id: "coach",
         title: "AI Coach (your key)",
         description:
           "Use OpenAI, Gemini, or Claude with your API key. On-device privacy; daily limits by plan.",
-        icon: "✨",
       },
       {
+        id: "nutrition",
         title: "Nutrition & hydration",
         description:
           "Calorie budget, macros, water, and active kcal from your workouts — aligned to your metrics.",
-        icon: "🥗",
       },
       {
+        id: "progress",
         title: "Progress that sticks",
         description:
           "XP and ranks, PRs, milestones, weekly volume, and a muscle recovery map.",
-        icon: "📈",
       },
       {
+        id: "social",
         title: "Real community",
         description:
           "Friends, ephemeral feed, shared PRs, and leaderboards — motivation beyond solo tracking.",
-        icon: "🏆",
       },
       {
+        id: "trainer",
         title: "Trainer mode",
         description:
           "Manage students: recovery, daily nutrition, and personalized routines.",
-        icon: "🎓",
       },
     ],
   },
   pricing: {
     title: "Choose your plan",
     subtitle:
-      "Start free. Gymrat and Gymrat Pro expand routine and AI limits (daily limits apply unless you upgrade).",
+      "Start free. Gymrat and Gymrat Pro expand routines, AI Coach, and premium features.",
     popular: "Popular",
     plans: {
       free: {
         name: "Free",
         price: "$0",
         period: "forever",
-        description: "Train, log, and compete with the essentials.",
+        description: "Train, eat, and compete with the essentials.",
         features: [
-          "Workouts, routines, and history",
-          "Progress, PRs, and recovery",
-          "Nutrition and hydration",
-          "Social, feed, and leaderboards",
-          "AI Coach with daily limits",
+          "Up to 10 routines",
+          "AI Coach: 5 messages/day",
+          "Train, food (search, quick, manual), water, progress, and social",
+          "With your own API key (BYOK): proactive AI, AI photo, and unlimited Coach",
+          "Food barcode locked on Free",
         ],
         cta: "Create free account",
       },
@@ -460,12 +467,14 @@ const en: Dictionary = {
         name: "Gymrat",
         price: "Coming soon",
         period: "/ month",
-        description: "More AI power and tools to break plateaus.",
+        description: "More routines, more AI Coach, and experience extras.",
         features: [
-          "Everything in Free",
-          "More AI Coach usage",
-          "AI routine generation",
-          "Higher saved-routine capacity",
+          "Up to 20 routines",
+          "AI Coach: 30 messages/day",
+          "Proactive AI",
+          "Custom accent color",
+          "Food barcode scanning",
+          "No AI food photo or trainer mode",
         ],
         cta: "Join the waitlist",
       },
@@ -473,12 +482,13 @@ const en: Dictionary = {
         name: "Gymrat Pro",
         price: "Coming soon",
         period: "/ month",
-        description: "The full package for athletes and coaches.",
+        description: "Max routines, unlimited Coach, and trainer mode.",
         features: [
+          "Up to 50 routines",
+          "Unlimited AI Coach",
           "Everything in Gymrat",
-          "Advanced AI nutrition",
-          "Trainer / students mode",
-          "Priority support",
+          "AI food photo",
+          "Trainer mode (students)",
         ],
         cta: "Join the waitlist",
       },
@@ -493,9 +503,9 @@ const en: Dictionary = {
     sameEmail: "with the same email as in the app.",
   },
   cta: {
-    title: "Ready to forge your best self?",
+    title: "Ready to start?",
     subtitle:
-      "Create your account and download the app. The product is mobile; the website is your front door.",
+      "Create your account and download the app. Forge Your Potential — the product is mobile; the website is your front door.",
     createAccount: "Create account",
     downloadApp: "Download app",
   },
@@ -522,7 +532,7 @@ const en: Dictionary = {
   },
   footer: {
     tagline:
-      "Forge your best self. Train, eat, measure, and push forward with AI and community — in one place.",
+      "Forge Your Potential. Train, eat, measure, and push forward with AI and community — in one place.",
     product: "Product",
     account: "Account",
     download: "Download",
