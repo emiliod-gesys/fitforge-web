@@ -26,7 +26,7 @@ const config: Config = {
         glow: "0 10px 40px rgba(50, 89, 149, 0.35)",
       },
       fontFamily: {
-        sans: ["var(--font-outfit)", "system-ui", "sans-serif"],
+        sans: ["var(--font-lexend)", "system-ui", "sans-serif"],
       },
       keyframes: {
         "fade-up": {

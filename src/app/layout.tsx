@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Lexend } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
-const outfit = Outfit({
+const lexend = Lexend({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-lexend",
   display: "swap",
 });
 
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={outfit.variable}>
+    <html lang="es" className={lexend.variable}>
       <body className="flex min-h-screen flex-col font-sans">
         <SiteHeader />
         <main className="flex-1">{children}</main>
