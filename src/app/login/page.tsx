@@ -20,7 +20,7 @@ export default async function LoginPage({ searchParams }: Props) {
       alternate={
         <>
           ¿No tienes cuenta?{" "}
-          <Link href="/signup" className="text-forge-orange hover:underline">
+          <Link href="/signup" className="text-forge-blue hover:underline">
             Regístrate gratis
           </Link>
         </>

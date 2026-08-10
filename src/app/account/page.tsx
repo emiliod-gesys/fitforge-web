@@ -44,14 +44,14 @@ export default async function AccountPage() {
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="rounded-2xl border border-forge-border bg-forge-card p-5">
           <p className="text-sm text-forge-muted">Nivel</p>
-          <p className="mt-1 text-2xl font-bold text-forge-orange">{level}</p>
+          <p className="mt-1 text-2xl font-bold text-forge-blue">{level}</p>
           <p className="mt-1 text-xs text-forge-muted">
             {(profile?.total_xp ?? 0).toLocaleString("es")} XP total
           </p>
         </div>
         <div className="rounded-2xl border border-forge-border bg-forge-card p-5">
           <p className="text-sm text-forge-muted">Plan</p>
-          <p className="mt-1 text-2xl font-bold">Free</p>
+          <p className="mt-1 text-2xl font-bold">Gratuito</p>
           <p className="mt-1 text-xs text-forge-muted">Stripe próximamente</p>
         </div>
       </div>
@@ -59,7 +59,7 @@ export default async function AccountPage() {
       <div className="grid gap-3 sm:grid-cols-2">
         <Link
           href="/account/profile"
-          className="rounded-xl border border-forge-border bg-forge-card p-5 transition hover:border-forge-orange/50"
+          className="rounded-xl border border-forge-border bg-forge-card p-5 transition hover:border-forge-blue/50"
         >
           <p className="font-semibold">Configuración del perfil</p>
           <p className="mt-1 text-sm text-forge-muted">
@@ -68,11 +68,11 @@ export default async function AccountPage() {
         </Link>
         <Link
           href="/account/subscription"
-          className="rounded-xl border border-forge-border bg-forge-card p-5 transition hover:border-forge-orange/50"
+          className="rounded-xl border border-forge-border bg-forge-card p-5 transition hover:border-forge-blue/50"
         >
           <p className="font-semibold">Suscripción</p>
           <p className="mt-1 text-sm text-forge-muted">
-            Ver plan actual y opciones Pro / Pro+.
+            Ver plan actual y opciones Gymrat / Gymrat Pro.
           </p>
         </Link>
       </div>

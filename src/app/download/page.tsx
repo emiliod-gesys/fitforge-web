@@ -23,25 +23,25 @@ export default async function DownloadPage() {
 
   return (
     <div className="mx-auto max-w-lg px-6 py-24 text-center">
-      <h1 className="text-3xl font-bold">Descarga FitForge</h1>
+      <h1 className="text-3xl font-bold">Descarga Forgen</h1>
       <p className="mt-4 text-forge-muted">
         Elige tu plataforma para ir directo a la tienda.
       </p>
       <div className="mt-10 flex flex-col gap-4">
         <a
           href={playStore}
-          className="rounded-xl bg-forge-orange py-4 font-semibold text-white hover:bg-forge-orange-dark"
+          className="rounded-xl bg-forge-blue py-4 font-semibold text-white hover:bg-forge-blue-dark"
         >
           Android — Google Play
         </a>
         <a
           href={appStore}
-          className="rounded-xl border border-forge-border py-4 font-semibold hover:border-forge-orange"
+          className="rounded-xl border border-forge-border py-4 font-semibold hover:border-forge-blue"
         >
           iOS — App Store
         </a>
       </div>
-      <Link href="/" className="mt-8 inline-block text-sm text-forge-muted hover:text-forge-orange">
+      <Link href="/" className="mt-8 inline-block text-sm text-forge-muted hover:text-forge-blue">
         ← Volver al inicio
       </Link>
     </div>

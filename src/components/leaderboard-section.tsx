@@ -31,7 +31,7 @@ function LeaderboardRow({
     <li
       className={`flex items-center gap-4 rounded-xl border px-4 py-3 ${
         entry.is_current_user
-          ? "border-forge-orange/50 bg-forge-orange/10"
+          ? "border-forge-blue/50 bg-forge-blue/10"
           : "border-forge-border bg-forge-card/60"
       }`}
     >
@@ -46,10 +46,10 @@ function LeaderboardRow({
       <div className="min-w-0 flex-1">
         <p className="truncate font-medium">{name}</p>
         {entry.is_current_user && (
-          <p className="text-xs text-forge-orange">Tú</p>
+          <p className="text-xs text-forge-blue">Tú</p>
         )}
       </div>
-      <p className="shrink-0 text-sm font-semibold text-forge-orange">
+      <p className="shrink-0 text-sm font-semibold text-forge-blue">
         {formatLeaderboardValue(metric, entry, period)}
       </p>
     </li>
@@ -104,7 +104,7 @@ export function LeaderboardSection() {
     <section id="leaderboards" className="border-t border-forge-border bg-forge-black px-6 py-20">
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-forge-orange">
+          <p className="text-sm font-semibold uppercase tracking-wider text-forge-blue">
             Comunidad
           </p>
           <h2 className="mt-2 text-3xl font-bold md:text-4xl">
@@ -123,8 +123,8 @@ export function LeaderboardSection() {
               onClick={() => setPeriod(item.id)}
               className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
                 period === item.id
-                  ? "bg-forge-orange text-white"
-                  : "border border-forge-border text-forge-muted hover:border-forge-orange/50"
+                  ? "bg-forge-blue text-white"
+                  : "border border-forge-border text-forge-muted hover:border-forge-blue/50"
               }`}
             >
               {item.label}
@@ -140,8 +140,8 @@ export function LeaderboardSection() {
               onClick={() => setMetric(item.id)}
               className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
                 metric === item.id
-                  ? "bg-forge-card text-forge-text ring-1 ring-forge-orange"
-                  : "border border-forge-border text-forge-muted hover:border-forge-orange/50"
+                  ? "bg-forge-card text-forge-text ring-1 ring-forge-blue"
+                  : "border border-forge-border text-forge-muted hover:border-forge-blue/50"
               }`}
             >
               {item.label}

@@ -41,12 +41,9 @@ export function FeatureGrid() {
         <p className="mx-auto mt-4 max-w-2xl text-center text-forge-muted">
           Diseñada para quienes entrenan en serio, sin complicar lo esencial.
         </p>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((feature) => (
-            <article
-              key={feature.title}
-              className="rounded-2xl border border-forge-border bg-forge-card p-6 transition hover:border-forge-orange/40"
-            >
+            <article key={feature.title} className="border-t border-forge-border/80 pt-6">
               <span className="text-3xl" aria-hidden>
                 {feature.icon}
               </span>

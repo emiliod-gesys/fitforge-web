@@ -94,7 +94,7 @@ export function ProfileSettingsForm({ profile, email }: Props) {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-orange focus:ring-2";
+    "w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-blue focus:ring-2";
   const readOnlyClass = `${inputClass} opacity-60`;
 
   return (
@@ -253,7 +253,7 @@ export function ProfileSettingsForm({ profile, email }: Props) {
       )}
 
       {message && (
-        <p className="rounded-lg border border-forge-orange/30 bg-forge-orange/10 px-4 py-3 text-sm">
+        <p className="rounded-lg border border-forge-blue/30 bg-forge-blue/10 px-4 py-3 text-sm">
           {message}
         </p>
       )}
@@ -261,7 +261,7 @@ export function ProfileSettingsForm({ profile, email }: Props) {
       <button
         type="submit"
         disabled={loading}
-        className="rounded-xl bg-forge-orange px-6 py-3 font-semibold text-white hover:bg-forge-orange-dark disabled:opacity-60"
+        className="rounded-xl bg-forge-blue px-6 py-3 font-semibold text-white hover:bg-forge-blue-dark disabled:opacity-60"
       >
         {loading ? "Guardando…" : "Guardar cambios"}
       </button>

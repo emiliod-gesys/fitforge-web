@@ -219,7 +219,7 @@ export function AuthForm({
 
   return (
     <div className="mx-auto max-w-md px-6 py-16">
-      <Link href="/" className="text-sm text-forge-muted hover:text-forge-orange">
+      <Link href="/" className="text-sm text-forge-muted hover:text-forge-blue">
         ← Inicio
       </Link>
       <h1 className="mt-6 text-3xl font-bold">{title}</h1>
@@ -237,7 +237,7 @@ export function AuthForm({
               autoComplete="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-orange focus:ring-2"
+              className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-blue focus:ring-2"
               placeholder="Tu nombre"
             />
           </div>
@@ -254,7 +254,7 @@ export function AuthForm({
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-orange focus:ring-2"
+            className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-blue focus:ring-2"
             placeholder="tu@email.com"
           />
         </div>
@@ -271,7 +271,7 @@ export function AuthForm({
             minLength={6}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-orange focus:ring-2"
+            className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-blue focus:ring-2"
           />
         </div>
 
@@ -294,7 +294,7 @@ export function AuthForm({
         )}
 
         {message && (
-          <p className="rounded-lg border border-forge-orange/30 bg-forge-orange/10 px-4 py-3 text-sm text-forge-text">
+          <p className="rounded-lg border border-forge-blue/30 bg-forge-blue/10 px-4 py-3 text-sm text-forge-text">
             {message}
           </p>
         )}
@@ -302,7 +302,7 @@ export function AuthForm({
         <button
           type="submit"
           disabled={loading || !captchaReady}
-          className="w-full rounded-xl bg-forge-orange py-3 font-semibold text-white hover:bg-forge-orange-dark disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-xl bg-forge-blue py-3 font-semibold text-white hover:bg-forge-blue-dark disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? "Espera…" : primaryCta}
         </button>
@@ -313,7 +313,7 @@ export function AuthForm({
           type="button"
           onClick={handleForgotPassword}
           disabled={loading}
-          className="mt-4 text-sm text-forge-muted hover:text-forge-orange"
+          className="mt-4 text-sm text-forge-muted hover:text-forge-blue"
         >
           ¿Olvidaste tu contraseña?
         </button>
@@ -327,7 +327,7 @@ export function AuthForm({
           type="button"
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="mt-4 w-full rounded-xl border border-forge-border bg-forge-card py-3 text-sm font-semibold hover:border-forge-orange/50 disabled:opacity-60"
+          className="mt-4 w-full rounded-xl border border-forge-border bg-forge-card py-3 text-sm font-semibold hover:border-forge-blue/50 disabled:opacity-60"
         >
           Google
         </button>

@@ -23,13 +23,13 @@ export default function HomePage() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/signup"
-              className="rounded-xl bg-forge-orange px-6 py-3 font-semibold text-white shadow-glow transition hover:bg-forge-orange-dark"
+              className="rounded-xl bg-forge-blue px-6 py-3 font-semibold text-white shadow-glow transition hover:bg-forge-blue-dark"
             >
               Crear cuenta
             </Link>
             <Link
               href="/download"
-              className="rounded-xl border border-forge-border px-6 py-3 font-semibold text-forge-text transition hover:border-forge-orange hover:text-forge-orange"
+              className="rounded-xl border border-forge-border px-6 py-3 font-semibold text-forge-text transition hover:border-forge-blue hover:text-forge-blue"
             >
               Descargar app
             </Link>

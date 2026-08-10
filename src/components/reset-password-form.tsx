@@ -66,12 +66,12 @@ export function ResetPasswordForm() {
 
   return (
     <div className="mx-auto max-w-md px-6 py-16">
-      <Link href="/login" className="text-sm text-forge-muted hover:text-forge-orange">
+      <Link href="/login" className="text-sm text-forge-muted hover:text-forge-blue">
         ← Iniciar sesión
       </Link>
       <h1 className="mt-6 text-3xl font-bold">Nueva contraseña</h1>
       <p className="mt-2 text-forge-muted">
-        Elige una contraseña nueva para tu cuenta FitForge.
+        Elige una contraseña nueva para tu cuenta Forgen.
       </p>
 
       {!ready ? (
@@ -92,7 +92,7 @@ export function ResetPasswordForm() {
             minLength={6}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-orange focus:ring-2"
+            className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-blue focus:ring-2"
           />
         </div>
 
@@ -108,7 +108,7 @@ export function ResetPasswordForm() {
             minLength={6}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-orange focus:ring-2"
+            className="w-full rounded-xl border border-forge-border bg-forge-card px-4 py-3 outline-none ring-forge-blue focus:ring-2"
           />
         </div>
 
@@ -119,7 +119,7 @@ export function ResetPasswordForm() {
         )}
 
         {message && (
-          <p className="rounded-lg border border-forge-orange/30 bg-forge-orange/10 px-4 py-3 text-sm text-forge-text">
+          <p className="rounded-lg border border-forge-blue/30 bg-forge-blue/10 px-4 py-3 text-sm text-forge-text">
             {message}
           </p>
         )}
@@ -127,7 +127,7 @@ export function ResetPasswordForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-xl bg-forge-orange py-3 font-semibold text-white hover:bg-forge-orange-dark disabled:opacity-60"
+          className="w-full rounded-xl bg-forge-blue py-3 font-semibold text-white hover:bg-forge-blue-dark disabled:opacity-60"
         >
           {loading ? "Guardando…" : "Guardar contraseña"}
         </button>

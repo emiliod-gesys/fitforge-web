@@ -62,7 +62,7 @@ export async function SiteHeader() {
               </Link>
               <Link
                 href="/signup"
-                className="rounded-lg bg-forge-orange px-4 py-2 text-sm font-semibold text-white transition hover:bg-forge-orange-dark"
+                className="rounded-lg bg-forge-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-forge-blue-dark"
               >
                 Empezar gratis
               </Link>

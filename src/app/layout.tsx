@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
+import { Outfit } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "FitForge — Forja tu mejor versión",
-    template: "%s | FitForge",
+    default: "Forgen — Forja tu mejor versión",
+    template: "%s | Forgen",
   },
   description:
     "App de entrenamiento con IA, rutinas, progreso y comunidad. Disponible en Android e iOS.",
   openGraph: {
-    title: "FitForge",
+    title: "Forgen",
     description: "Forja tu mejor versión",
     type: "website",
-    images: [{ url: "/logo.png", width: 1024, height: 1024, alt: "FitForge" }],
+    images: [{ url: "/logo.png", width: 1024, height: 1024, alt: "Forgen" }],
   },
   icons: {
     icon: "/logo.png",
@@ -28,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className="min-h-screen flex flex-col">
+    <html lang="es" className={outfit.variable}>
+      <body className="flex min-h-screen flex-col font-sans">
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

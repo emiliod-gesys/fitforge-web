@@ -3,53 +3,47 @@ import { Logo } from "./logo";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-20 pt-16 md:pb-28 md:pt-24">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,102,34,0.18)_0%,_transparent_55%)]" />
-      <div className="relative mx-auto max-w-6xl">
-        <div className="mb-10 flex justify-center">
-          <Logo className="h-96 w-auto max-w-full md:h-[32rem]" />
+    <section className="relative overflow-hidden px-6 pb-24 pt-14 md:pb-32 md:pt-20">
+      <div
+        className="pointer-events-none absolute inset-0 animate-atmosphere bg-[radial-gradient(ellipse_at_top,_rgba(50,89,149,0.28)_0%,_transparent_58%)]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-forge-navy/50 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-forge-blue/20 blur-3xl"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center text-center">
+        <div className="animate-fade-in">
+          <Logo className="h-48 w-auto max-w-[min(100%,22rem)] md:h-64 md:max-w-md" />
         </div>
-        <div className="max-w-3xl">
-          <p className="mb-4 inline-flex rounded-full border border-forge-orange/30 bg-forge-orange/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-forge-orange">
-            Entrena · Progresa · Compite
-          </p>
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Forja tu mejor versión con{" "}
-            <span className="text-forge-orange">FitForge</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-forge-muted md:text-xl">
-            Rutinas inteligentes, coach con IA, mapa de recuperación muscular y comunidad
-            para mantenerte consistente.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/download"
-              className="rounded-xl bg-forge-orange px-6 py-3.5 font-semibold text-white shadow-glow transition hover:bg-forge-orange-dark"
-            >
-              Descargar app
-            </Link>
-            <Link
-              href="/signup"
-              className="rounded-xl border border-forge-border bg-forge-card px-6 py-3.5 font-semibold transition hover:border-forge-orange/50"
-            >
-              Crear cuenta web
-            </Link>
-          </div>
-        </div>
-        <div className="mt-16 grid gap-4 sm:grid-cols-3">
-          {[
-            { value: "200+", label: "Ejercicios" },
-            { value: "IA", label: "Coach personal" },
-            { value: "XP", label: "Sistema de niveles" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl border border-forge-border bg-forge-card/80 p-6 backdrop-blur"
-            >
-              <p className="text-3xl font-extrabold text-forge-orange">{stat.value}</p>
-              <p className="mt-1 text-sm text-forge-muted">{stat.label}</p>
-            </div>
-          ))}
+
+        <h1 className="mt-10 animate-fade-up text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl [animation-delay:120ms]">
+          Forja tu mejor versión
+        </h1>
+
+        <p className="mt-5 max-w-xl animate-fade-up text-lg text-forge-muted md:text-xl [animation-delay:240ms]">
+          Rutinas inteligentes, coach con IA y comunidad para mantenerte
+          consistente — todo en Forgen.
+        </p>
+
+        <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-4 [animation-delay:360ms]">
+          <Link
+            href="/download"
+            className="rounded-xl bg-forge-blue px-7 py-3.5 font-semibold text-white shadow-glow transition hover:bg-forge-blue-dark"
+          >
+            Descargar app
+          </Link>
+          <Link
+            href="/signup"
+            className="rounded-xl border border-forge-border bg-forge-charcoal/60 px-7 py-3.5 font-semibold text-forge-text transition hover:border-forge-blue/60"
+          >
+            Crear cuenta web
+          </Link>
         </div>
       </div>
     </section>

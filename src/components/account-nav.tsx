@@ -26,7 +26,7 @@ export function AccountNav() {
             href={link.href}
             className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
               active
-                ? "bg-forge-orange text-white"
+                ? "bg-forge-blue text-white"
                 : "text-forge-muted hover:bg-forge-card hover:text-forge-text"
             }`}
           >

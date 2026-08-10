@@ -13,14 +13,14 @@ export default function AccountSubscriptionPage() {
       <div>
         <h2 className="text-xl font-bold">Tu suscripción</h2>
         <p className="mt-2 text-sm text-forge-muted">
-          Administra tu plan FitForge. Los pagos con Stripe llegarán en la siguiente fase.
+          Administra tu plan Forgen. Los pagos con Stripe llegarán en la siguiente fase.
         </p>
       </div>
 
-      <div className="rounded-2xl border border-forge-orange/40 bg-forge-orange/10 p-6">
+      <div className="rounded-2xl border border-forge-blue/40 bg-forge-blue/10 p-6">
         <p className="text-sm font-medium text-forge-muted">Plan actual</p>
         <p className="mt-1 text-2xl font-bold">
-          {PLANS.find((p) => p.id === currentPlanId)?.name ?? "Free"}
+          {PLANS.find((p) => p.id === currentPlanId)?.name ?? "Gratuito"}
         </p>
         <p className="mt-2 text-sm text-forge-muted">
           Acceso a entrenos, progreso y comunidad. Sin costo.
@@ -40,7 +40,7 @@ export default function AccountSubscriptionPage() {
                 key={plan.id}
                 className={`rounded-xl border px-4 py-4 ${
                   isCurrent
-                    ? "border-forge-orange/50 bg-forge-orange/5"
+                    ? "border-forge-blue/50 bg-forge-blue/5"
                     : "border-forge-border bg-forge-card"
                 }`}
               >
@@ -49,14 +49,14 @@ export default function AccountSubscriptionPage() {
                     <p className="font-semibold">
                       {plan.name}
                       {isCurrent && (
-                        <span className="ml-2 text-xs font-normal text-forge-orange">
+                        <span className="ml-2 text-xs font-normal text-forge-blue">
                           (actual)
                         </span>
                       )}
                     </p>
                     <p className="mt-1 text-sm text-forge-muted">{plan.description}</p>
                   </div>
-                  <p className="shrink-0 font-bold text-forge-orange">
+                  <p className="shrink-0 font-bold text-forge-blue">
                     {plan.price}
                     <span className="text-sm font-normal text-forge-muted">
                       {" "}
@@ -82,7 +82,7 @@ export default function AccountSubscriptionPage() {
 
       <Link
         href="/#pricing"
-        className="inline-block text-sm text-forge-orange hover:underline"
+        className="inline-block text-sm text-forge-blue hover:underline"
       >
         Comparar planes en la landing →
       </Link>

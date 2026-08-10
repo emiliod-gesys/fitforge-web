@@ -12,7 +12,7 @@ type Props = {
 export default async function SignupPage({ searchParams }: Props) {
   const { plan, redirect } = await searchParams;
   const planLabel =
-    plan === "pro" ? "Pro" : plan === "pro_plus" ? "Pro+" : "Free";
+    plan === "pro" ? "Gymrat" : plan === "pro_plus" ? "Gymrat Pro" : "Gratuito";
 
   return (
     <AuthFormShell
@@ -22,7 +22,7 @@ export default async function SignupPage({ searchParams }: Props) {
       alternate={
         <>
           ¿Ya tienes cuenta?{" "}
-          <Link href="/login" className="text-forge-orange hover:underline">
+          <Link href="/login" className="text-forge-blue hover:underline">
             Inicia sesión
           </Link>
         </>

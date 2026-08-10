@@ -11,5 +11,5 @@ html {
 }
 
 body {
-  @apply bg-forge-black text-forge-text antialiased;
+  @apply bg-forge-black font-sans text-forge-text antialiased;
 }

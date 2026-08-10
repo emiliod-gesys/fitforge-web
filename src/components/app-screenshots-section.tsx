@@ -164,11 +164,11 @@ export function AppScreenshotsSection() {
     <section id="app" className="border-t border-forge-border bg-forge-surface px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-wider text-forge-orange">
+          <p className="text-sm font-semibold uppercase tracking-wider text-forge-blue">
             La app
           </p>
           <h2 className="mt-2 text-3xl font-bold md:text-4xl">
-            FitForge en tu bolsillo
+            Forgen en tu bolsillo
           </h2>
           <p className="mt-3 text-forge-muted">
             Misma cuenta, mismos datos. Las 6 áreas de la app, en detalle.
@@ -183,8 +183,8 @@ export function AppScreenshotsSection() {
               onClick={() => setActiveId(group.id)}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                 activeId === group.id
-                  ? "bg-forge-orange text-white"
-                  : "border border-forge-border text-forge-muted hover:border-forge-orange/50 hover:text-forge-text"
+                  ? "bg-forge-blue text-white"
+                  : "border border-forge-border text-forge-muted hover:border-forge-blue/50 hover:text-forge-text"
               }`}
             >
               {group.label}

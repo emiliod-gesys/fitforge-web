@@ -1,7 +1,7 @@
 export const PLANS = [
   {
     id: "free",
-    name: "Free",
+    name: "Gratuito",
     price: "$0",
     period: "para siempre",
     description: "Empieza a entrenar y registrar tu progreso.",
@@ -16,12 +16,12 @@ export const PLANS = [
   },
   {
     id: "pro",
-    name: "Pro",
+    name: "Gymrat",
     price: "Próximamente",
     period: "/ mes",
     description: "IA coach y herramientas avanzadas para romper mesetas.",
     features: [
-      "Todo lo de Free",
+      "Todo lo de Gratuito",
       "Coach IA ilimitado",
       "Generación de rutinas con IA",
       "Análisis de recuperación avanzado",
@@ -31,12 +31,12 @@ export const PLANS = [
   },
   {
     id: "pro_plus",
-    name: "Pro+",
+    name: "Gymrat Pro",
     price: "Próximamente",
     period: "/ mes",
     description: "El paquete completo para atletas serios.",
     features: [
-      "Todo lo de Pro",
+      "Todo lo de Gymrat",
       "Nutrición avanzada con IA",
       "Planes personalizados premium",
       "Soporte prioritario",
