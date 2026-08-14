@@ -52,6 +52,21 @@ export function SiteFooter() {
               </li>
             </ul>
           </div>
+          <div>
+            <p className="font-semibold text-forge-text">{dict.footer.legal}</p>
+            <ul className="mt-3 space-y-2 text-forge-muted">
+              <li>
+                <Link href="/privacy" className="hover:text-forge-blue">
+                  {dict.footer.privacy}
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-forge-blue">
+                  {dict.footer.terms}
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <p className="mx-auto mt-10 max-w-6xl text-center text-xs text-forge-muted">

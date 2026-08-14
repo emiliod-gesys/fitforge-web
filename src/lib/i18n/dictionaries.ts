@@ -116,11 +116,14 @@ export type Dictionary = {
     tagline: string;
     product: string;
     account: string;
+    legal: string;
     download: string;
     pricing: string;
     signIn: string;
     signUp: string;
     subscription: string;
+    privacy: string;
+    terms: string;
     rights: string;
   };
   language: {
@@ -331,11 +334,14 @@ const es: Dictionary = {
       "Forge Your Potential. Entrenas, comes, mides y te impulsas con IA y comunidad — en un solo lugar.",
     product: "Producto",
     account: "Cuenta",
+    legal: "Legal",
     download: "Descargar",
     pricing: "Planes",
     signIn: "Iniciar sesión",
     signUp: "Registrarse",
     subscription: "Mi suscripción",
+    privacy: "Política de privacidad",
+    terms: "Términos del servicio",
     rights: "Todos los derechos reservados.",
   },
   language: {
@@ -546,11 +552,14 @@ const en: Dictionary = {
       "Forge Your Potential. Train, eat, measure, and push forward with AI and community — in one place.",
     product: "Product",
     account: "Account",
+    legal: "Legal",
     download: "Download",
     pricing: "Plans",
     signIn: "Sign in",
     signUp: "Sign up",
     subscription: "My subscription",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
     rights: "All rights reserved.",
   },
   language: {
