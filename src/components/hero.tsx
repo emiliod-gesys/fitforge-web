@@ -25,10 +25,10 @@ export function Hero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
           <Logo className="h-48 w-auto max-w-[min(100%,22rem)] md:h-64 md:max-w-md" />
         </div>
 
-        <h1 className="mt-10 animate-fade-up text-5xl font-extrabold tracking-[0.18em] md:text-7xl [animation-delay:120ms]">
+        <h1 className="mt-10 animate-fade-up text-5xl font-extrabold tracking-tight md:text-7xl [animation-delay:120ms]">
           {APP_NAME}
         </h1>
-        <p className="mt-3 animate-fade-up text-xl font-semibold text-forge-blue md:text-2xl [animation-delay:180ms]">
+        <p className="mt-3 animate-fade-up text-lg font-medium text-forge-blue md:text-xl [animation-delay:180ms]">
           {dict.hero.slogan}
         </p>
 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Logo } from "./logo";
+import { PRIVACY_URL, TERMS_URL } from "@/lib/brand";
 import { useDictionary } from "@/components/locale-provider";
 
 export function SiteFooter() {
@@ -56,14 +57,14 @@ export function SiteFooter() {
             <p className="font-semibold text-forge-text">{dict.footer.legal}</p>
             <ul className="mt-3 space-y-2 text-forge-muted">
               <li>
-                <Link href="/privacy" className="hover:text-forge-blue">
+                <a href={PRIVACY_URL} className="hover:text-forge-blue">
                   {dict.footer.privacy}
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-forge-blue">
+                <a href={TERMS_URL} className="hover:text-forge-blue">
                   {dict.footer.terms}
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

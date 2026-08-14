@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LanguageSwitcher } from "./language-switcher";
 import { Logo } from "./logo";
+import { APP_NAME } from "@/lib/brand";
 import { SignOutButton } from "./sign-out-button";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
@@ -34,9 +35,7 @@ export async function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-9 w-auto" />
-          <span className="text-sm font-bold tracking-[0.18em] text-forge-text">
-            FORGEN
-          </span>
+          <span className="text-sm font-bold text-forge-text">{APP_NAME}</span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (

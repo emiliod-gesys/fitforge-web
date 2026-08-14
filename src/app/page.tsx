@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AppScreenshotsSection } from "@/components/app-screenshots-section";
+import { AppIdentity } from "@/components/app-identity";
 import { CatalogHighlight } from "@/components/catalog-highlight";
 import { DownloadSection } from "@/components/download-section";
 import { FeatureGrid } from "@/components/feature-grid";
@@ -23,6 +24,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero dict={dict} locale={locale} />
+      <AppIdentity />
       <CatalogHighlight />
       <AppScreenshotsSection />
       <FeatureGrid />
