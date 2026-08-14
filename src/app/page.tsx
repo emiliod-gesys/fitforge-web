@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { AppScreenshotsSection } from "@/components/app-screenshots-section";
 import { CatalogHighlight } from "@/components/catalog-highlight";
@@ -8,14 +6,23 @@ import { FeatureGrid } from "@/components/feature-grid";
 import { Hero } from "@/components/hero";
 import { LeaderboardSection } from "@/components/leaderboard-section";
 import { PricingSection } from "@/components/pricing-section";
-import { useDictionary } from "@/components/locale-provider";
+import { APP_NAME } from "@/lib/brand";
+import { getDictionary } from "@/lib/i18n/dictionaries";
+import { getLocale } from "@/lib/i18n/get-locale";
 
-export default function HomePage() {
-  const dict = useDictionary();
+export const metadata = {
+  title: APP_NAME,
+  description:
+    "FORGEN is a mobile fitness application for Android and iOS. Sign in with Google, Apple, or email.",
+};
+
+export default async function HomePage() {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
 
   return (
     <>
-      <Hero />
+      <Hero dict={dict} locale={locale} />
       <CatalogHighlight />
       <AppScreenshotsSection />
       <FeatureGrid />

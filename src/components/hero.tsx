@@ -1,12 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import { Logo } from "./logo";
-import { useDictionary } from "@/components/locale-provider";
+import { APP_NAME, APP_PURPOSE_EN } from "@/lib/brand";
+import type { Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-export function Hero() {
-  const dict = useDictionary();
-
+export function Hero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
     <section className="relative overflow-hidden px-6 pb-24 pt-14 md:pb-32 md:pt-20">
       <div
@@ -28,7 +26,7 @@ export function Hero() {
         </div>
 
         <h1 className="mt-10 animate-fade-up text-5xl font-extrabold tracking-[0.18em] md:text-7xl [animation-delay:120ms]">
-          {dict.hero.title}
+          {APP_NAME}
         </h1>
         <p className="mt-3 animate-fade-up text-xl font-semibold text-forge-blue md:text-2xl [animation-delay:180ms]">
           {dict.hero.slogan}
@@ -37,6 +35,14 @@ export function Hero() {
         <p className="mt-6 max-w-2xl animate-fade-up text-base leading-relaxed text-forge-muted md:text-lg [animation-delay:240ms]">
           {dict.hero.purpose}
         </p>
+        {locale !== "en" ? (
+          <p
+            lang="en"
+            className="mt-4 max-w-2xl text-base leading-relaxed text-forge-muted md:text-lg"
+          >
+            {APP_PURPOSE_EN}
+          </p>
+        ) : null}
 
         <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-4 [animation-delay:360ms]">
           <Link

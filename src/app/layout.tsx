@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "FORGEN",
   title: {
-    default: "FORGEN — Forge Your Potential",
+    default: "FORGEN",
     template: "%s | FORGEN",
   },
   description:
@@ -61,7 +61,7 @@ const jsonLd = {
   operatingSystem: "Android, iOS",
   url: siteUrl,
   description:
-    "FORGEN is a mobile fitness app for Android and iOS used to create and follow workouts, log nutrition, track progress, connect with friends, and use an AI Coach.",
+    "FORGEN is a mobile fitness application for Android and iOS used to create and follow workouts, log nutrition, track progress, connect with friends, and use an AI Coach. Users can sign in to FORGEN with Google, Apple, or email.",
   offers: {
     "@type": "Offer",
     price: "0",
