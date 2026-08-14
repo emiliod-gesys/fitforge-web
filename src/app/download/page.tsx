@@ -23,7 +23,7 @@ export default async function DownloadPage() {
 
   return (
     <div className="mx-auto max-w-lg px-6 py-24 text-center">
-      <h1 className="text-3xl font-bold">Descarga Forgen</h1>
+      <h1 className="text-3xl font-bold">Descarga FORGEN</h1>
       <p className="mt-4 text-forge-muted">
         Elige tu plataforma para ir directo a la tienda.
       </p>

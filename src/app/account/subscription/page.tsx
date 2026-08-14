@@ -13,7 +13,7 @@ export default function AccountSubscriptionPage() {
       <div>
         <h2 className="text-xl font-bold">Tu suscripción</h2>
         <p className="mt-2 text-sm text-forge-muted">
-          Administra tu plan Forgen. Los pagos con Stripe llegarán en la siguiente fase.
+          Administra tu plan FORGEN. Los pagos con Stripe llegarán en la siguiente fase.
         </p>
       </div>
 

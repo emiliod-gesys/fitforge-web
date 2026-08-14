@@ -32,8 +32,11 @@ export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-forge-border/80 bg-forge-black/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-2">
           <Logo className="h-9 w-auto" />
+          <span className="text-sm font-bold tracking-[0.18em] text-forge-text">
+            FORGEN
+          </span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (

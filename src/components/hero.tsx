@@ -27,12 +27,15 @@ export function Hero() {
           <Logo className="h-48 w-auto max-w-[min(100%,22rem)] md:h-64 md:max-w-md" />
         </div>
 
-        <h1 className="mt-10 animate-fade-up text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl [animation-delay:120ms]">
+        <h1 className="mt-10 animate-fade-up text-5xl font-extrabold tracking-[0.18em] md:text-7xl [animation-delay:120ms]">
           {dict.hero.title}
         </h1>
+        <p className="mt-3 animate-fade-up text-xl font-semibold text-forge-blue md:text-2xl [animation-delay:180ms]">
+          {dict.hero.slogan}
+        </p>
 
-        <p className="mt-5 max-w-xl animate-fade-up text-lg text-forge-muted md:text-xl [animation-delay:240ms]">
-          {dict.hero.subtitle}
+        <p className="mt-6 max-w-2xl animate-fade-up text-base leading-relaxed text-forge-muted md:text-lg [animation-delay:240ms]">
+          {dict.hero.purpose}
         </p>
 
         <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-4 [animation-delay:360ms]">

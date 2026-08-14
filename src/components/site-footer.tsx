@@ -70,7 +70,7 @@ export function SiteFooter() {
         </div>
       </div>
       <p className="mx-auto mt-10 max-w-6xl text-center text-xs text-forge-muted">
-        © {new Date().getFullYear()} Forgen. {dict.footer.rights}
+        © {new Date().getFullYear()} FORGEN. {dict.footer.rights}
       </p>
     </footer>
   );

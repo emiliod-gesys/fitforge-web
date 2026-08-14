@@ -71,7 +71,7 @@ export function ResetPasswordForm() {
       </Link>
       <h1 className="mt-6 text-3xl font-bold">Nueva contraseña</h1>
       <p className="mt-2 text-forge-muted">
-        Elige una contraseña nueva para tu cuenta Forgen.
+        Elige una contraseña nueva para tu cuenta FORGEN.
       </p>
 
       {!ready ? (
