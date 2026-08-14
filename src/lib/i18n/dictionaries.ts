@@ -14,8 +14,7 @@ export type Dictionary = {
   };
   hero: {
     title: string;
-    slogan: string;
-    purpose: string;
+    subtitle: string;
     downloadCta: string;
     signupCta: string;
   };
@@ -147,10 +146,9 @@ const es: Dictionary = {
     getStarted: "Empezar gratis",
   },
   hero: {
-    title: "FORGEN",
-    slogan: "Forge Your Potential",
-    purpose:
-      "FORGEN es una aplicación móvil de fitness para Android e iOS. Sirve para crear y seguir entrenamientos (gimnasio, carrera y HYROX), registrar nutrición e hidratación, medir tu progreso, conectar con amigos y usar un Coach con inteligencia artificial. Puedes crear una cuenta FORGEN e iniciar sesión con Google, Apple o email. Esta web es la página oficial de la app FORGEN.",
+    title: "Forge Your Potential",
+    subtitle:
+      "Entrena, come, mide tu progreso e impúlsate con IA y comunidad — gym, carrera y HYROX en un solo lugar.",
     downloadCta: "Descargar app",
     signupCta: "Crear cuenta web",
   },
@@ -333,7 +331,7 @@ const es: Dictionary = {
   },
   footer: {
     tagline:
-      "FORGEN — Forge Your Potential. App móvil de fitness: entrenos, nutrición, progreso, social y Coach IA.",
+      "Forge Your Potential. Entrenas, comes, mides y te impulsas con IA y comunidad — en un solo lugar.",
     product: "Producto",
     account: "Cuenta",
     legal: "Legal",
@@ -366,10 +364,9 @@ const en: Dictionary = {
     getStarted: "Start free",
   },
   hero: {
-    title: "FORGEN",
-    slogan: "Forge Your Potential",
-    purpose:
-      "FORGEN is a mobile fitness application for Android and iOS. The FORGEN app is used to create and follow workouts (gym, running, and HYROX), log nutrition and hydration, track progress, connect with friends, and use an AI Coach. You can create a FORGEN account and sign in with Google, Apple, or email. This website is the official homepage of the FORGEN app.",
+    title: "Forge Your Potential",
+    subtitle:
+      "Train, eat, track progress, and push forward with AI and community — gym, running, and HYROX in one place.",
     downloadCta: "Download app",
     signupCta: "Create web account",
   },
@@ -552,7 +549,7 @@ const en: Dictionary = {
   },
   footer: {
     tagline:
-      "FORGEN — Forge Your Potential. Mobile fitness app: workouts, nutrition, progress, social, and AI Coach.",
+      "Forge Your Potential. Train, eat, measure, and push forward with AI and community — in one place.",
     product: "Product",
     account: "Account",
     legal: "Legal",

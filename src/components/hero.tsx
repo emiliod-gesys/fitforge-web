@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "./logo";
-import { APP_NAME, APP_PURPOSE_EN } from "@/lib/brand";
-import type { Locale } from "@/lib/i18n/config";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { useDictionary } from "@/components/locale-provider";
 
-export function Hero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export function Hero() {
+  const dict = useDictionary();
+
   return (
     <section className="relative overflow-hidden px-6 pb-24 pt-14 md:pb-32 md:pt-20">
       <div
@@ -25,24 +27,13 @@ export function Hero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
           <Logo className="h-48 w-auto max-w-[min(100%,22rem)] md:h-64 md:max-w-md" />
         </div>
 
-        <h1 className="mt-10 animate-fade-up text-5xl font-extrabold tracking-tight md:text-7xl [animation-delay:120ms]">
-          {APP_NAME}
+        <h1 className="mt-10 animate-fade-up text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl [animation-delay:120ms]">
+          {dict.hero.title}
         </h1>
-        <p className="mt-3 animate-fade-up text-lg font-medium text-forge-blue md:text-xl [animation-delay:180ms]">
-          {dict.hero.slogan}
-        </p>
 
-        <p className="mt-6 max-w-2xl animate-fade-up text-base leading-relaxed text-forge-muted md:text-lg [animation-delay:240ms]">
-          {dict.hero.purpose}
+        <p className="mt-5 max-w-xl animate-fade-up text-lg text-forge-muted md:text-xl [animation-delay:240ms]">
+          {dict.hero.subtitle}
         </p>
-        {locale !== "en" ? (
-          <p
-            lang="en"
-            className="mt-4 max-w-2xl text-base leading-relaxed text-forge-muted md:text-lg"
-          >
-            {APP_PURPOSE_EN}
-          </p>
-        ) : null}
 
         <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-4 [animation-delay:360ms]">
           <Link
