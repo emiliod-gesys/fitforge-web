@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
-import { LocaleProvider } from "@/components/locale-provider";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { getDictionary } from "@/lib/i18n/dictionaries";
-import { getLocale } from "@/lib/i18n/get-locale";
+import { I18nShell } from "@/components/i18n-shell";
+import { APP_NAME, APP_PURPOSE_EN, SITE_URL } from "@/lib/brand";
 import "./globals.css";
 
 const lexend = Lexend({
@@ -13,17 +10,14 @@ const lexend = Lexend({
   display: "swap",
 });
 
-const siteUrl = "https://www.forgen.app";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  applicationName: "FORGEN",
+  metadataBase: new URL(SITE_URL),
+  applicationName: APP_NAME,
   title: {
-    default: "FORGEN",
-    template: "%s | FORGEN",
+    default: APP_NAME,
+    template: `%s | ${APP_NAME}`,
   },
-  description:
-    "FORGEN is a mobile fitness app for Android and iOS: 1,300+ exercises, workouts, nutrition, progress, social, and AI Coach. Gym, running, and HYROX.",
+  description: APP_PURPOSE_EN,
   keywords: [
     "FORGEN",
     "fitness app",
@@ -33,16 +27,15 @@ export const metadata: Metadata = {
     "nutrition",
   ],
   alternates: {
-    canonical: siteUrl,
+    canonical: SITE_URL,
   },
   openGraph: {
-    title: "FORGEN",
-    siteName: "FORGEN",
-    url: siteUrl,
-    description:
-      "FORGEN is a mobile fitness app for Android and iOS. Train, log nutrition, track progress, and use an AI Coach.",
+    title: APP_NAME,
+    siteName: APP_NAME,
+    url: SITE_URL,
+    description: APP_PURPOSE_EN,
     type: "website",
-    images: [{ url: "/logo.png", width: 1024, height: 1024, alt: "FORGEN" }],
+    images: [{ url: "/logo.png", width: 1024, height: 1024, alt: APP_NAME }],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
@@ -53,42 +46,20 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "FORGEN",
-  applicationCategory: "HealthApplication",
-  operatingSystem: "Android, iOS",
-  url: siteUrl,
-  description:
-    "FORGEN is a mobile fitness application for Android and iOS used to create and follow workouts, log nutrition, track progress, connect with friends, and use an AI Coach. Users can sign in to FORGEN with Google, Apple, or email.",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-};
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
-  const dict = getDictionary(locale);
-
   return (
-    <html lang={locale} className={lexend.variable}>
+    <html lang="en" className={lexend.variable}>
+      <head>
+        <title>{APP_NAME}</title>
+        <meta name="application-name" content={APP_NAME} />
+        <meta name="description" content={APP_PURPOSE_EN} />
+      </head>
       <body className="flex min-h-screen flex-col font-sans">
-        <LocaleProvider locale={locale} dict={dict}>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-          />
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-        </LocaleProvider>
+        <I18nShell>{children}</I18nShell>
       </body>
     </html>
   );
