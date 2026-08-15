@@ -4,6 +4,7 @@ export const APP_NAME = "FORGEN";
 export const SITE_URL = "https://www.forgen.app";
 export const PRIVACY_URL = `${SITE_URL}/privacy`;
 export const TERMS_URL = `${SITE_URL}/terms`;
+export const DELETE_ACCOUNT_URL = `${SITE_URL}/delete-account`;
 
 /** Always present in homepage HTML so Google’s OAuth crawler (often English, no JS) can read it. */
 export const APP_PURPOSE_EN =

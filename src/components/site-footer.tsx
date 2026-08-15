@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Logo } from "./logo";
-import { PRIVACY_URL, TERMS_URL } from "@/lib/brand";
+import { DELETE_ACCOUNT_URL, PRIVACY_URL, TERMS_URL } from "@/lib/brand";
 import { useDictionary } from "@/components/locale-provider";
 
 export function SiteFooter() {
@@ -64,6 +64,11 @@ export function SiteFooter() {
               <li>
                 <a href={TERMS_URL} className="hover:text-forge-blue">
                   {dict.footer.terms}
+                </a>
+              </li>
+              <li>
+                <a href={DELETE_ACCOUNT_URL} className="hover:text-forge-blue">
+                  {dict.footer.deleteAccount}
                 </a>
               </li>
             </ul>

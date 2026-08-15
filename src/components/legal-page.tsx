@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useDictionary, useLocaleContext } from "@/components/locale-provider";
 
-type LegalDoc = "privacy" | "terms";
+type LegalDoc = "privacy" | "terms" | "delete-account";
 
 type Section = {
   title: string;
@@ -350,50 +350,136 @@ function termsEn(): Section[] {
   ];
 }
 
+function deleteAccountEs(): Section[] {
+  return [
+    {
+      title: "1. App y desarrollador",
+      paragraphs: [
+        "Esta página es para la aplicación móvil FORGEN (Android e iOS) y el sitio forgen.app. Si tienes una cuenta de FORGEN, aquí puedes solicitar que se borren tu cuenta y los datos asociados.",
+      ],
+    },
+    {
+      title: "2. Cómo solicitar el borrado (pasos)",
+      paragraphs: [
+        "Opción A — Desde la app FORGEN: 1) Abre FORGEN e inicia sesión. 2) Ve a Perfil → Cuenta. 3) Elige Eliminar cuenta. 4) Confirma. La solicitud se procesa de inmediato o en un máximo de 30 días.",
+        "Opción B — Por email (si desinstalaste la app o no puedes entrar): escribe a " +
+          CONTACT +
+          " desde el mismo email de tu cuenta FORGEN. Asunto: “Eliminar cuenta FORGEN”. Incluye el email de la cuenta. Confirmaremos y borraremos la cuenta en un máximo de 30 días.",
+        "No hace falta que la app esté instalada para usar la opción B.",
+      ],
+    },
+    {
+      title: "3. Datos que se eliminan",
+      paragraphs: [
+        "Al completar el borrado de tu cuenta FORGEN eliminamos: email y credenciales de acceso; nombre visible, foto de perfil y preferencias; entrenos, series, rutinas, nutrición, agua, métricas, PRs y mapa de recuperación; actividad social (amigos, publicaciones, posición en rankings) y datos de modo alumnos asociados a tu cuenta; tokens de notificaciones; historial del Coach IA vinculado a tu usuario.",
+        "Si iniciaste sesión con Google o Apple, borrar FORGEN no cierra tu cuenta de Google o Apple. Puedes revocar el acceso de FORGEN en la configuración de esa cuenta.",
+      ],
+    },
+    {
+      title: "4. Datos que se pueden conservar y por cuánto tiempo",
+      paragraphs: [
+        "Copias de seguridad técnicas: hasta 30 días, solo para recuperación ante fallos; después se sobrescriben o destruyen.",
+        "Registros de seguridad o abuso (p. ej. IP o identificadores de dispositivo en logs): el tiempo mínimo necesario, normalmente no más de 90 días.",
+        "Facturación: si hubo un pago, Google Play, App Store o el procesador de pagos pueden conservar comprobantes según sus reglas fiscales. FORGEN no guarda números completos de tarjeta.",
+        "Datos agregados que ya no te identifican (estadísticas de uso) pueden permanecer. Contenido que hayas hecho visible a otros (p. ej. un PR en el feed de un amigo) puede dejar de mostrar tu nombre, pero una copia en el dispositivo de otra persona no está bajo nuestro control.",
+      ],
+    },
+    {
+      title: "5. Contacto",
+      paragraphs: [
+        "Soporte de cuentas FORGEN: " +
+          CONTACT +
+          ". Política de privacidad: https://www.forgen.app/privacy",
+      ],
+    },
+  ];
+}
+
+function deleteAccountEn(): Section[] {
+  return [
+    {
+      title: "1. App and developer",
+      paragraphs: [
+        "This page is for the FORGEN mobile app (Android and iOS) and the forgen.app website. If you have a FORGEN account, you can use this page to request deletion of your account and associated data.",
+      ],
+    },
+    {
+      title: "2. How to request deletion (steps)",
+      paragraphs: [
+        "Option A — In the FORGEN app: 1) Open FORGEN and sign in. 2) Go to Profile → Account. 3) Choose Delete account. 4) Confirm. We process the request immediately or within 30 days.",
+        "Option B — By email (if you uninstalled the app or cannot sign in): email " +
+          CONTACT +
+          " from the same address as your FORGEN account. Subject: “Delete FORGEN account”. Include the account email. We will confirm and delete the account within 30 days.",
+        "You do not need the app installed to use option B.",
+      ],
+    },
+    {
+      title: "3. Data that is deleted",
+      paragraphs: [
+        "When your FORGEN account is deleted we remove: email and login credentials; display name, profile photo, and preferences; workouts, sets, routines, nutrition, water, metrics, PRs, and recovery map; social activity (friends, posts, leaderboard standing) and student-mode data tied to your account; notification tokens; AI Coach history linked to your user.",
+        "If you signed in with Google or Apple, deleting FORGEN does not close your Google or Apple account. You can revoke FORGEN’s access in that account’s settings.",
+      ],
+    },
+    {
+      title: "4. Data that may be retained and for how long",
+      paragraphs: [
+        "Technical backups: up to 30 days, only for disaster recovery; then they are overwritten or destroyed.",
+        "Security or abuse logs (e.g. IP or device identifiers): for the minimum time needed, normally no more than 90 days.",
+        "Billing: if you paid, Google Play, the App Store, or the payment processor may keep receipts under their tax rules. FORGEN does not store full card numbers.",
+        "Aggregated data that no longer identifies you (usage stats) may remain. Content you made visible to others (e.g. a PR on a friend’s feed) may stop showing your name, but a copy on someone else’s device is outside our control.",
+      ],
+    },
+    {
+      title: "5. Contact",
+      paragraphs: [
+        "FORGEN account support: " +
+          CONTACT +
+          ". Privacy Policy: https://www.forgen.app/privacy",
+      ],
+    },
+  ];
+}
+
 export function LegalPage({ doc }: { doc: LegalDoc }) {
   const { locale } = useLocaleContext();
   const dict = useDictionary();
   const isEs = locale === "es";
-  const title =
-    doc === "privacy"
-      ? isEs
-        ? "Política de privacidad"
-        : "Privacy Policy"
-      : isEs
-        ? "Términos del servicio"
-        : "Terms of Service";
-  const updated = isEs ? UPDATED : UPDATED_EN;
-  const intro =
-    doc === "privacy"
-      ? isEs
+  const copy = {
+    privacy: {
+      title: isEs ? "Política de privacidad" : "Privacy Policy",
+      intro: isEs
         ? "Esta política describe cómo FORGEN trata datos personales en la app y en forgen.app. Última actualización:"
-        : "This policy describes how FORGEN handles personal data in the app and on forgen.app. Last updated:"
-      : isEs
+        : "This policy describes how FORGEN handles personal data in the app and on forgen.app. Last updated:",
+      sections: isEs ? privacyEs() : privacyEn(),
+    },
+    terms: {
+      title: isEs ? "Términos del servicio" : "Terms of Service",
+      intro: isEs
         ? "Estos términos regulan el uso de FORGEN. Última actualización:"
-        : "These terms govern use of FORGEN. Last updated:";
-  const sections =
-    doc === "privacy"
-      ? isEs
-        ? privacyEs()
-        : privacyEn()
-      : isEs
-        ? termsEs()
-        : termsEn();
-  const otherHref = doc === "privacy" ? "/terms" : "/privacy";
-  const otherLabel =
-    doc === "privacy" ? dict.footer.terms : dict.footer.privacy;
+        : "These terms govern use of FORGEN. Last updated:",
+      sections: isEs ? termsEs() : termsEn(),
+    },
+    "delete-account": {
+      title: isEs ? "Eliminar cuenta FORGEN" : "Delete your FORGEN account",
+      intro: isEs
+        ? "Cómo solicitar el borrado de tu cuenta y datos en la app FORGEN. Última actualización:"
+        : "How to request deletion of your FORGEN app account and data. Last updated:",
+      sections: isEs ? deleteAccountEs() : deleteAccountEn(),
+    },
+  }[doc];
+  const updated = isEs ? UPDATED : UPDATED_EN;
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
       <p className="text-sm font-semibold uppercase tracking-wider text-forge-blue">
         FORGEN
       </p>
-      <h1 className="mt-2 text-3xl font-bold md:text-4xl">{title}</h1>
+      <h1 className="mt-2 text-3xl font-bold md:text-4xl">{copy.title}</h1>
       <p className="mt-4 text-forge-muted">
-        {intro} {updated}.
+        {copy.intro} {updated}.
       </p>
       <div className="mt-10 space-y-10">
-        {sections.map((section) => (
+        {copy.sections.map((section) => (
           <section key={section.title}>
             <h2 className="text-lg font-semibold">{section.title}</h2>
             {section.paragraphs.map((p) => (
@@ -404,11 +490,22 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
           </section>
         ))}
       </div>
-      <p className="mt-12 text-sm text-forge-muted">
-        <Link href={otherHref} className="text-forge-blue hover:underline">
-          {otherLabel}
-        </Link>
-        {" · "}
+      <p className="mt-12 flex flex-wrap gap-x-4 gap-y-2 text-sm text-forge-muted">
+        {doc !== "privacy" ? (
+          <Link href="/privacy" className="text-forge-blue hover:underline">
+            {dict.footer.privacy}
+          </Link>
+        ) : null}
+        {doc !== "terms" ? (
+          <Link href="/terms" className="text-forge-blue hover:underline">
+            {dict.footer.terms}
+          </Link>
+        ) : null}
+        {doc !== "delete-account" ? (
+          <Link href="/delete-account" className="text-forge-blue hover:underline">
+            {dict.footer.deleteAccount}
+          </Link>
+        ) : null}
         <Link href="/" className="hover:text-forge-blue">
           {isEs ? "Volver al inicio" : "Back to home"}
         </Link>

@@ -124,6 +124,7 @@ export type Dictionary = {
     subscription: string;
     privacy: string;
     terms: string;
+    deleteAccount: string;
     rights: string;
   };
   language: {
@@ -342,6 +343,7 @@ const es: Dictionary = {
     subscription: "Mi suscripción",
     privacy: "Política de privacidad",
     terms: "Términos del servicio",
+    deleteAccount: "Eliminar cuenta",
     rights: "Todos los derechos reservados.",
   },
   language: {
@@ -560,6 +562,7 @@ const en: Dictionary = {
     subscription: "My subscription",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
+    deleteAccount: "Delete account",
     rights: "All rights reserved.",
   },
   language: {
