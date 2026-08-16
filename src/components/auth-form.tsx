@@ -13,15 +13,30 @@ declare global {
         container: HTMLElement,
         options: {
           sitekey: string;
+          theme?: "light" | "dark" | "auto";
+          retry?: "auto" | "never";
           callback: (token: string) => void;
           "expired-callback"?: () => void;
-          "error-callback"?: () => void;
+          "error-callback"?: (errorCode: string) => void | boolean;
         },
       ) => string;
       reset: (widgetId: string) => void;
       remove: (widgetId: string) => void;
     };
   }
+}
+
+const TURNSTILE_SCRIPT_SRC =
+  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+function turnstileErrorHint(code: string | null) {
+  if (code?.startsWith("1102") || code === "110200") {
+    return "El dominio no está autorizado en Cloudflare Turnstile. Añade www.forgen.app y forgen.app en Hostname Management.";
+  }
+  if (code?.startsWith("1101") || code === "400020" || code === "400070") {
+    return "La sitekey de Turnstile no es válida o está desactivada. Revisa NEXT_PUBLIC_TURNSTILE_SITE_KEY.";
+  }
+  return "No se pudo cargar la verificación. Si usas WARP/1.1.1.1, un VPN o un bloqueador, desactívalo temporalmente y recarga.";
 }
 
 type Mode = "login" | "signup";
@@ -71,6 +86,7 @@ export function AuthForm({
     turnstileSiteKey ? null : "",
   );
   const [captchaError, setCaptchaError] = useState(false);
+  const [captchaErrorCode, setCaptchaErrorCode] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(
@@ -80,42 +96,68 @@ export function AuthForm({
   );
 
   useEffect(() => {
-    if (!turnstileSiteKey || !turnstileRef.current) return;
+    if (!turnstileSiteKey) return;
+
+    let cancelled = false;
 
     const renderWidget = () => {
-      if (!window.turnstile || !turnstileRef.current) return;
+      if (cancelled || !window.turnstile || !turnstileRef.current) return;
       if (widgetIdRef.current) {
         window.turnstile.remove(widgetIdRef.current);
         widgetIdRef.current = null;
       }
       widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
         sitekey: turnstileSiteKey,
+        theme: "dark",
+        retry: "auto",
         callback: (token) => {
           setCaptchaToken(token);
           setCaptchaError(false);
+          setCaptchaErrorCode(null);
         },
         "expired-callback": () => setCaptchaToken(null),
-        "error-callback": () => {
+        "error-callback": (errorCode) => {
           setCaptchaToken(null);
           setCaptchaError(true);
+          setCaptchaErrorCode(errorCode);
+          return true;
         },
       });
     };
 
     if (window.turnstile) {
       renderWidget();
-      return;
+    } else {
+      const existing = document.querySelector<HTMLScriptElement>(
+        `script[src="${TURNSTILE_SCRIPT_SRC}"]`,
+      );
+
+      if (existing) {
+        existing.addEventListener("load", renderWidget);
+      } else {
+        const script = document.createElement("script");
+        script.src = TURNSTILE_SCRIPT_SRC;
+        script.async = true;
+        script.defer = true;
+        script.onload = renderWidget;
+        script.onerror = () => {
+          if (!cancelled) {
+            setCaptchaError(true);
+            setCaptchaErrorCode("script");
+          }
+        };
+        document.head.appendChild(script);
+      }
     }
 
-    const script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-    script.async = true;
-    script.onload = renderWidget;
-    document.head.appendChild(script);
-
     return () => {
+      cancelled = true;
+      document
+        .querySelector<HTMLScriptElement>(`script[src="${TURNSTILE_SCRIPT_SRC}"]`)
+        ?.removeEventListener("load", renderWidget);
       if (widgetIdRef.current && window.turnstile) {
         window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
       }
     };
   }, []);
@@ -277,11 +319,15 @@ export function AuthForm({
 
         {needsCaptcha && (
           <>
-            <div ref={turnstileRef} className="min-h-[65px]" />
+            <div ref={turnstileRef} className="min-h-[65px] overflow-visible" />
             {captchaError && (
               <p className="text-sm text-amber-300">
-                No se pudo cargar la verificación. Si usas WARP/1.1.1.1, desactívalo
-                temporalmente o recarga la página.
+                {turnstileErrorHint(captchaErrorCode)}
+                {captchaErrorCode && captchaErrorCode !== "script" ? (
+                  <span className="mt-1 block text-xs text-forge-muted">
+                    Código: {captchaErrorCode}
+                  </span>
+                ) : null}
               </p>
             )}
           </>

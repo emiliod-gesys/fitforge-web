@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { AppleIcon, GooglePlayIcon } from "@/components/store-icons";
 import { getStoreUrl } from "@/lib/download";
 
 export const metadata = {
@@ -30,14 +31,16 @@ export default async function DownloadPage() {
       <div className="mt-10 flex flex-col gap-4">
         <a
           href={playStore}
-          className="rounded-xl bg-forge-blue py-4 font-semibold text-white hover:bg-forge-blue-dark"
+          className="inline-flex items-center justify-center gap-3 rounded-xl bg-forge-blue py-4 font-semibold text-white hover:bg-forge-blue-dark"
         >
+          <GooglePlayIcon className="h-7 w-7" />
           Android — Google Play
         </a>
         <a
           href={appStore}
-          className="rounded-xl border border-forge-border py-4 font-semibold hover:border-forge-blue"
+          className="inline-flex items-center justify-center gap-3 rounded-xl border border-forge-border py-4 font-semibold hover:border-forge-blue"
         >
+          <AppleIcon className="h-7 w-7" />
           iOS — App Store
         </a>
       </div>

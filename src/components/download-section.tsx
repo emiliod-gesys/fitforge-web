@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useDictionary } from "@/components/locale-provider";
+import { AppleIcon, GooglePlayIcon } from "@/components/store-icons";
 
 export function DownloadSection() {
   const dict = useDictionary();
@@ -22,7 +23,8 @@ export function DownloadSection() {
             rel="noopener noreferrer"
             className="inline-flex min-w-[200px] items-center justify-center gap-2 rounded-xl bg-forge-blue px-6 py-4 font-semibold text-white shadow-glow transition hover:bg-forge-blue-dark"
           >
-            <span aria-hidden>▶</span> Google Play
+            <GooglePlayIcon className="h-7 w-7" />
+            Google Play
           </a>
           <a
             href={appStore}
@@ -30,7 +32,8 @@ export function DownloadSection() {
             rel="noopener noreferrer"
             className="inline-flex min-w-[200px] items-center justify-center gap-2 rounded-xl border border-forge-border bg-forge-card px-6 py-4 font-semibold text-forge-muted transition hover:border-forge-grey"
           >
-            <span aria-hidden>🍎</span> {dict.download.appStoreSoon}
+            <AppleIcon className="h-7 w-7" />
+            {dict.download.appStoreSoon}
           </a>
         </div>
         <p className="mt-6 text-sm text-forge-muted">
