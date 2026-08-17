@@ -4,10 +4,14 @@ import Link from "next/link";
 import { AppScreenshotsSection } from "@/components/app-screenshots-section";
 import { CatalogHighlight } from "@/components/catalog-highlight";
 import { DownloadSection } from "@/components/download-section";
+import { FaqSection } from "@/components/faq-section";
 import { FeatureGrid } from "@/components/feature-grid";
 import { Hero } from "@/components/hero";
+import { HowItWorks } from "@/components/how-it-works";
 import { LeaderboardSection } from "@/components/leaderboard-section";
 import { PricingSection } from "@/components/pricing-section";
+import { ProductDetails } from "@/components/product-details";
+import { TrainingModes } from "@/components/training-modes";
 import { useDictionary } from "@/components/locale-provider";
 
 export default function HomePage() {
@@ -16,10 +20,14 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <HowItWorks />
       <CatalogHighlight />
+      <TrainingModes />
       <AppScreenshotsSection />
+      <ProductDetails />
       <FeatureGrid />
       <PricingSection />
+      <FaqSection />
       <DownloadSection />
       <section className="border-t border-forge-border bg-forge-surface px-6 py-16">
         <div className="mx-auto max-w-3xl text-center">

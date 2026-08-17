@@ -62,6 +62,9 @@ export function PricingSection() {
             </article>
           ))}
         </div>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-forge-muted">
+          {dict.pricing.note}
+        </p>
       </div>
     </section>
   );

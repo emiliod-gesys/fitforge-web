@@ -24,6 +24,7 @@ export async function SiteHeader() {
 
   const nav = [
     { href: "/#app", label: dict.nav.app },
+    { href: "/#how", label: dict.nav.how },
     { href: "/#features", label: dict.nav.features },
     { href: "/#pricing", label: dict.nav.pricing },
     { href: "/download", label: dict.nav.download },
