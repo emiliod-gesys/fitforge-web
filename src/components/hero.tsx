@@ -25,12 +25,14 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="relative mx-auto max-w-6xl">
+        <div className="flex justify-center animate-fade-in">
+          <Logo className="h-48 w-auto max-w-[min(100%,22rem)] md:h-64 md:max-w-md" />
+        </div>
+
+        <div className="mt-10 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="text-center lg:text-left">
-          <div className="animate-fade-in lg:hidden">
-            <Logo className="mx-auto h-28 w-auto max-w-[12rem]" />
-          </div>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-forge-blue lg:mt-0">
+          <p className="text-sm font-semibold uppercase tracking-wider text-forge-blue">
             {dict.hero.eyebrow}
           </p>
           <h1 className="mt-3 animate-fade-up text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl">
@@ -68,6 +70,7 @@ export function Hero() {
             />
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
