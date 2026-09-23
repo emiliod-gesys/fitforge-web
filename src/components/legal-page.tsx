@@ -10,8 +10,8 @@ type Section = {
   paragraphs: string[];
 };
 
-const UPDATED = "13 de agosto de 2026";
-const UPDATED_EN = "August 13, 2026";
+const UPDATED = "22 de septiembre de 2026";
+const UPDATED_EN = "September 22, 2026";
 const CONTACT = "support@forgen.app";
 
 function privacyEs(): Section[] {
@@ -30,15 +30,27 @@ function privacyEs(): Section[] {
         "Inicio de sesión con Google o Apple: si eliges esos proveedores, recibimos identificadores básicos que ellos comparten (por ejemplo email y, si lo autorizas, nombre y foto de perfil).",
         "Verificación de seguridad: cuando está activo Cloudflare Turnstile, se procesa un token de captcha para reducir abuso en registro e inicio de sesión.",
         "Datos de entrenamiento y salud que tú registras: entrenos, series, peso, repeticiones, RIR, descanso, rutinas, métricas corporales, nutrición, agua, progreso, PRs, mapa de recuperación muscular y actividad social (amigos, feed, clasificaciones, modo alumnos).",
+        "Location / ubicación: si inicias una carrera o caminata outdoor, FORGEN accede a location (ubicación precisa y aproximada, GPS) del dispositivo. Ver la sección 3.",
+        "Cámara, fotos y micrófono: si usas código de barras, foto de comida, ejercicios personalizados o dictado de comidas, accedemos a cámara, galería o audio solo para esa función.",
+        "Apple Salud / Health Connect (si lo autorizas): podemos leer peso y grasa corporal, y escribir entrenos, distancia y calorías activas.",
         "Datos técnicos: identificadores de dispositivo, registros de uso, idioma, zona horaria y, si activas notificaciones, tokens de Firebase Cloud Messaging para avisos con la app cerrada (p. ej. cuando un amigo entrena).",
         "Pagos: si contratas un plan de pago, el procesador de pagos (p. ej. Stripe o las tiendas de aplicaciones) trata los datos de facturación. Nosotros no almacenamos números completos de tarjeta.",
         "Contenido que envías al Coach IA o a funciones de foto de comida: el texto o las imágenes que subes para obtener sugerencias. Esas solicitudes se procesan para darte la función; no vendemos ese contenido.",
       ],
     },
     {
-      title: "3. Para qué usamos los datos",
+      title: "3. Location / ubicación (GPS)",
       paragraphs: [
-        "Prestar el servicio: cuenta, sincronización entre dispositivos, entrenos, nutrición, rankings y modo alumnos cuando aplica.",
+        "FORGEN accede a location. Recogemos ubicación precisa y aproximada (GPS, ACCESS_FINE_LOCATION y ACCESS_COARSE_LOCATION) cuando tú inicias una sesión de running o caminata outdoor. No usamos location para anuncios ni la vendemos.",
+        "Cómo se recogen: el sistema operativo (Android o iOS) entrega coordenadas, altitud, precisión y marca de tiempo a través de las APIs de localización del dispositivo, solo después de que concedes el permiso. En una sesión GPS activa podemos seguir location en segundo plano (ACCESS_BACKGROUND_LOCATION / FOREGROUND_SERVICE_LOCATION) para no cortar el recorrido si bloqueas el teléfono; verás una notificación de que FORGEN está registrando la carrera.",
+        "Cómo se usan: calcular distancia, ritmo, splits, desnivel y dibujar la ruta del entreno. Esos puntos de location se guardan como parte del entrenamiento en tu cuenta (sincronización) para mostrarte el historial. El running en cinta no necesita location.",
+        "Puedes denegar o revocar el permiso de location en Ajustes del sistema. Sin él, las funciones GPS no funcionan; el resto de FORGEN sí. Al borrar la cuenta se eliminan las rutas asociadas.",
+      ],
+    },
+    {
+      title: "4. Para qué usamos los datos",
+      paragraphs: [
+        "Prestar el servicio: cuenta, sincronización entre dispositivos, entrenos (incluido tracking GPS de running), nutrición, rankings y modo alumnos cuando aplica.",
         "Coach IA y funciones premium: generar rutinas, consejos o estimación nutricional a partir de tus métricas en tiempo real y del contenido que envías, con los límites de tu plan. El Coach usa infraestructura de FORGEN; no te pedimos una API key propia.",
         "Seguridad: verificar inicios de sesión (incluido Turnstile cuando está activo), prevenir abuso y proteger leaderboards.",
         "Comunicaciones: avisos de cuenta, recuperación de contraseña y notificaciones que actives (p. ej. actividad social).",
@@ -46,16 +58,16 @@ function privacyEs(): Section[] {
       ],
     },
     {
-      title: "4. Base legal y conservación",
+      title: "5. Base legal y conservación",
       paragraphs: [
-        "Tratamos datos porque son necesarios para el contrato (tu cuenta y la app), porque tenemos un interés legítimo en seguridad y mejora del producto, o porque das consentimiento (p. ej. Google o Apple Sign-In, notificaciones o datos de salud que decides guardar).",
+        "Tratamos datos porque son necesarios para el contrato (tu cuenta y la app), porque tenemos un interés legítimo en seguridad y mejora del producto, o porque das consentimiento (p. ej. Google o Apple Sign-In, notificaciones, location / GPS, cámara o datos de salud que decides guardar).",
         "Conservamos la cuenta mientras esté activa. Puedes pedir la eliminación de la cuenta desde la app (Perfil → Cuenta) o escribiendo a " +
           CONTACT +
           ". Algunos registros técnicos o legales pueden conservarse el tiempo mínimo exigido por ley.",
       ],
     },
     {
-      title: "5. Con quién compartimos datos",
+      title: "6. Con quién compartimos datos",
       paragraphs: [
         "Proveedores que nos ayudan a operar el servicio, bajo contrato: alojamiento, base de datos y autenticación (Supabase), notificaciones push (Firebase), captcha (Cloudflare Turnstile), infraestructura web (Vercel) y, en su caso, pagos.",
         "Proveedores de IA que procesan las solicitudes del Coach o de foto de comida para devolver una respuesta. No usamos esos envíos para anuncios de terceros.",
@@ -65,13 +77,13 @@ function privacyEs(): Section[] {
       ],
     },
     {
-      title: "6. Transferencias internacionales",
+      title: "7. Transferencias internacionales",
       paragraphs: [
         "Nuestros proveedores pueden tratar datos en servidores fuera de tu país (por ejemplo Estados Unidos). Aplicamos las salvaguardas habituales de esos proveedores (contratos, medidas de seguridad).",
       ],
     },
     {
-      title: "7. Tus derechos",
+      title: "8. Tus derechos",
       paragraphs: [
         "Según tu país, puedes acceder, rectificar, exportar o eliminar datos, o oponerte a ciertos tratamientos. Empieza desde la app o escríbenos a " +
           CONTACT +
@@ -80,19 +92,19 @@ function privacyEs(): Section[] {
       ],
     },
     {
-      title: "8. Menores",
+      title: "9. Menores",
       paragraphs: [
         "FORGEN no está dirigida a menores de 13 años (o la edad mínima de consentimiento digital en tu país). Si detectamos una cuenta de un menor, la eliminaremos.",
       ],
     },
     {
-      title: "9. Cambios",
+      title: "10. Cambios",
       paragraphs: [
         "Si actualizamos esta política, publicaremos la nueva versión en esta página y cambiaremos la fecha de vigencia. El uso continuado del servicio tras un cambio relevante implica que has podido revisar la versión actual.",
       ],
     },
     {
-      title: "10. Contacto",
+      title: "11. Contacto",
       paragraphs: [
         "Preguntas sobre privacidad: " + CONTACT + ". Sitio: https://www.forgen.app",
       ],
@@ -116,15 +128,27 @@ function privacyEn(): Section[] {
         "Google or Apple Sign-In: if you choose those providers, we receive basic identifiers they share (such as email and, if you allow it, name and profile photo).",
         "Security verification: when Cloudflare Turnstile is enabled, a captcha token is processed to reduce abuse on sign-up and sign-in.",
         "Training and health data you log: workouts, sets, weight, reps, RIR, rest timer, routines, body metrics, nutrition, water, progress, PRs, muscle recovery map, and social activity (friends, feed, leaderboards, student mode).",
+        "Location: if you start an outdoor run or walk, FORGEN accesses location (precise and approximate GPS location) on the device. See section 3.",
+        "Camera, photos, and microphone: if you use barcode scan, food photos, custom exercises, or voice food logging, we access camera, photo library, or microphone only for that feature.",
+        "Apple Health / Health Connect (if you grant access): we may read weight and body fat, and write workouts, distance, and active calories.",
         "Technical data: device identifiers, usage logs, language, time zone, and, if you enable notifications, Firebase Cloud Messaging tokens for alerts when the app is closed (e.g. when a friend trains).",
         "Payments: if you buy a paid plan, the payment processor (e.g. Stripe or the app stores) handles billing data. We do not store full card numbers.",
         "Content you send to AI Coach or food-photo features: text or images you submit for suggestions. Those requests are processed to provide the feature; we do not sell that content.",
       ],
     },
     {
-      title: "3. How we use data",
+      title: "3. Location data (GPS)",
       paragraphs: [
-        "To provide the service: account, sync across devices, workouts, nutrition, rankings, and student mode when applicable.",
+        "FORGEN accesses location. We collect precise and approximate location (GPS; ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION) when you start an outdoor running or walking session. We do not use location for ads and we do not sell it.",
+        "How we collect it: the operating system (Android or iOS) provides coordinates, altitude, accuracy, and timestamps through the device location APIs, only after you grant permission. During an active GPS session we may continue to access location in the background (ACCESS_BACKGROUND_LOCATION / FOREGROUND_SERVICE_LOCATION) so the route is not cut off if you lock the phone; you will see a notification that FORGEN is recording the run.",
+        "How we use it: to calculate distance, pace, splits, elevation, and to draw the workout route. Those location points are stored as part of the workout on your account (sync) so you can see history. Treadmill running does not require location.",
+        "You can deny or revoke the location permission in system Settings. Without it, GPS features do not work; the rest of FORGEN still does. Deleting your account also deletes associated routes.",
+      ],
+    },
+    {
+      title: "4. How we use data",
+      paragraphs: [
+        "To provide the service: account, sync across devices, workouts (including GPS run tracking), nutrition, rankings, and student mode when applicable.",
         "AI Coach and premium features: generate routines, advice, or nutrition estimates from your live metrics and the content you send, within your plan limits. The Coach runs on FORGEN infrastructure; we do not ask you for your own API key.",
         "Security: verify sign-in (including Turnstile when enabled), prevent abuse, and protect leaderboards.",
         "Communications: account notices, password reset, and notifications you enable (e.g. social activity).",
@@ -132,16 +156,16 @@ function privacyEn(): Section[] {
       ],
     },
     {
-      title: "4. Legal basis and retention",
+      title: "5. Legal basis and retention",
       paragraphs: [
-        "We process data because it is needed to perform the contract (your account and the app), because we have a legitimate interest in security and product improvement, or because you consent (e.g. Google or Apple Sign-In, notifications, or health data you choose to store).",
+        "We process data because it is needed to perform the contract (your account and the app), because we have a legitimate interest in security and product improvement, or because you consent (e.g. Google or Apple Sign-In, notifications, location / GPS, camera, or health data you choose to store).",
         "We keep the account while it is active. You can request deletion from the app (Profile → Account) or by writing to " +
           CONTACT +
           ". Some technical or legal records may be kept for the minimum period required by law.",
       ],
     },
     {
-      title: "5. Who we share data with",
+      title: "6. Who we share data with",
       paragraphs: [
         "Service providers under contract: hosting, database, and authentication (Supabase), push notifications (Firebase), captcha (Cloudflare Turnstile), web infrastructure (Vercel), and payments where applicable.",
         "AI providers that process Coach or food-photo requests to return a response. We do not use those submissions for third-party ads.",
@@ -151,13 +175,13 @@ function privacyEn(): Section[] {
       ],
     },
     {
-      title: "6. International transfers",
+      title: "7. International transfers",
       paragraphs: [
         "Our providers may process data on servers outside your country (for example the United States). We rely on those providers’ standard safeguards (contracts and security measures).",
       ],
     },
     {
-      title: "7. Your rights",
+      title: "8. Your rights",
       paragraphs: [
         "Depending on your country, you may access, correct, export, or delete data, or object to certain processing. Start in the app or email " +
           CONTACT +
@@ -166,19 +190,19 @@ function privacyEn(): Section[] {
       ],
     },
     {
-      title: "8. Children",
+      title: "9. Children",
       paragraphs: [
         "FORGEN is not directed at children under 13 (or the digital-consent age in your country). If we learn an account belongs to a child, we will delete it.",
       ],
     },
     {
-      title: "9. Changes",
+      title: "10. Changes",
       paragraphs: [
         "If we update this policy, we will post the new version on this page and change the effective date. Continued use after a material change means you have had a chance to review the current version.",
       ],
     },
     {
-      title: "10. Contact",
+      title: "11. Contact",
       paragraphs: [
         "Privacy questions: " + CONTACT + ". Website: https://www.forgen.app",
       ],
@@ -371,7 +395,7 @@ function deleteAccountEs(): Section[] {
     {
       title: "3. Datos que se eliminan",
       paragraphs: [
-        "Al completar el borrado de tu cuenta FORGEN eliminamos: email y credenciales de acceso; nombre visible, foto de perfil y preferencias; entrenos, series, rutinas, nutrición, agua, métricas, PRs y mapa de recuperación; actividad social (amigos, publicaciones, posición en rankings) y datos de modo alumnos asociados a tu cuenta; tokens de notificaciones; historial del Coach IA vinculado a tu usuario.",
+        "Al completar el borrado de tu cuenta FORGEN eliminamos: email y credenciales de acceso; nombre visible, foto de perfil y preferencias; entrenos, series, rutinas, nutrición, agua, métricas, PRs, mapa de recuperación y rutas GPS (location) asociadas; actividad social (amigos, publicaciones, posición en rankings) y datos de modo alumnos asociados a tu cuenta; tokens de notificaciones; historial del Coach IA vinculado a tu usuario.",
         "Si iniciaste sesión con Google o Apple, borrar FORGEN no cierra tu cuenta de Google o Apple. Puedes revocar el acceso de FORGEN en la configuración de esa cuenta.",
       ],
     },
@@ -416,7 +440,7 @@ function deleteAccountEn(): Section[] {
     {
       title: "3. Data that is deleted",
       paragraphs: [
-        "When your FORGEN account is deleted we remove: email and login credentials; display name, profile photo, and preferences; workouts, sets, routines, nutrition, water, metrics, PRs, and recovery map; social activity (friends, posts, leaderboard standing) and student-mode data tied to your account; notification tokens; AI Coach history linked to your user.",
+        "When your FORGEN account is deleted we remove: email and login credentials; display name, profile photo, and preferences; workouts, sets, routines, nutrition, water, metrics, PRs, recovery map, and associated GPS location routes; social activity (friends, posts, leaderboard standing) and student-mode data tied to your account; notification tokens; AI Coach history linked to your user.",
         "If you signed in with Google or Apple, deleting FORGEN does not close your Google or Apple account. You can revoke FORGEN’s access in that account’s settings.",
       ],
     },
