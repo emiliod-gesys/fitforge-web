@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { AppleIcon, GooglePlayIcon } from "@/components/store-icons";
-import { getStoreUrl } from "@/lib/download";
+import { getStoreUrl, PLAY_STORE_URL } from "@/lib/download";
 
 export const metadata = {
   title: "Descargar",
@@ -17,9 +17,7 @@ export default async function DownloadPage() {
     redirect(url);
   }
 
-  const playStore =
-    process.env.NEXT_PUBLIC_PLAY_STORE_URL ??
-    "https://play.google.com/store/apps/details?id=io.fitforge.fitforge";
+  const playStore = PLAY_STORE_URL;
   const appStore = process.env.NEXT_PUBLIC_APP_STORE_URL ?? "#";
 
   return (

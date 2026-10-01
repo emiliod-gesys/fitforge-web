@@ -3,12 +3,11 @@
 import Link from "next/link";
 import { useDictionary } from "@/components/locale-provider";
 import { AppleIcon, GooglePlayIcon } from "@/components/store-icons";
+import { PLAY_STORE_URL } from "@/lib/download";
 
 export function DownloadSection() {
   const dict = useDictionary();
-  const playStore =
-    process.env.NEXT_PUBLIC_PLAY_STORE_URL ??
-    "https://play.google.com/store/apps/details?id=io.fitforge.fitforge";
+  const playStore = PLAY_STORE_URL;
   const appStore = process.env.NEXT_PUBLIC_APP_STORE_URL ?? "#";
 
   return (
