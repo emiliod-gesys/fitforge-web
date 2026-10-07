@@ -11,7 +11,6 @@ import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
 import { LeaderboardSection } from "@/components/leaderboard-section";
 import { PricingSection } from "@/components/pricing-section";
-import { ProductDetails } from "@/components/product-details";
 import { TrainingModes } from "@/components/training-modes";
 import { useDictionary } from "@/components/locale-provider";
 
@@ -21,15 +20,14 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <HowItWorks />
+      <FeatureGrid />
       <CatalogHighlight />
       <TrainingModes />
       <AppScreenshotsSection />
-      <ProductDetails />
-      <FeatureGrid />
+      <HowItWorks />
       <PricingSection />
-      <FaqSection />
       <DownloadSection />
+      <LeaderboardSection />
       <section className="relative overflow-hidden border-t border-forge-border bg-forge-black px-6 py-20 md:py-28">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(22,49,89,0.4)_0%,_transparent_60%)]"
@@ -68,7 +66,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <LeaderboardSection />
+      <FaqSection />
     </>
   );
 }

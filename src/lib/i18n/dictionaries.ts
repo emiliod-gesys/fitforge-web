@@ -17,6 +17,7 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     subtitle: string;
+    audience: string;
     proof: string;
     downloadCta: string;
     signupCta: string;
@@ -53,12 +54,6 @@ export type Dictionary = {
     subtitle: string;
     items: { title: string; description: string }[];
   };
-  details: {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    items: { title: string; description: string }[];
-  };
   faq: {
     eyebrow: string;
     title: string;
@@ -76,8 +71,8 @@ export type Dictionary = {
   pricing: {
     title: string;
     subtitle: string;
-    note: string;
-    popular: string;
+    soon: string;
+    reference: string;
     plans: {
       free: {
         name: string;
@@ -108,7 +103,7 @@ export type Dictionary = {
   download: {
     title: string;
     subtitle: string;
-    appStoreSoon: string;
+    appStore: string;
     hasAccount: string;
     signInLink: string;
     sameEmail: string;
@@ -164,7 +159,7 @@ export type Dictionary = {
 const es: Dictionary = {
   nav: {
     app: "App",
-    how: "Cómo funciona",
+    how: "Cómo empezar",
     features: "Funciones",
     pricing: "Planes",
     download: "Descargar",
@@ -178,8 +173,9 @@ const es: Dictionary = {
     eyebrow: "App móvil de fitness",
     title: "Forge Your Potential",
     subtitle:
-      "Entrena, come y mide tu progreso con IA y comunidad. Gym, running con GPS y HYROX — en un solo lugar.",
-    proof: "Android · Español e inglés · Más de 1.300 ejercicios con demo",
+      "FORGEN es la app para entrenar, anotar lo que comes y ver si estás avanzando.",
+    audience: "Para quien entrena en el gym, prepara un HYROX o corre con GPS.",
+    proof: "Android e iOS · Español e inglés",
     downloadCta: "Descargar app",
     signupCta: "Crear cuenta web",
   },
@@ -192,138 +188,95 @@ const es: Dictionary = {
   app: {
     eyebrow: "La app",
     title: "FORGEN en tu bolsillo",
-    subtitle:
-      "Misma cuenta, mismos datos. Entrena, nutrición, progreso, social, alumnos y perfil — en detalle.",
+    subtitle: "Las pantallas, sección por sección.",
     emptyScreenshots: "Pronto añadiremos capturas de esta sección.",
     groups: {
       train: {
         label: "Entrenar",
-        description:
-          "Hub del día: racha, sugerencia de sesión, rutinas, mapa de recuperación y registro de series. Catálogo con más de 1.300 ejercicios.",
+        description: "Racha, la rutina de hoy y la sesión abierta.",
       },
       coach: {
         label: "Coach IA",
-        description:
-          "Pide rutinas personalizadas, consejos y propuestas de alimentación. El coach usa tu historial y métricas en tiempo real.",
+        description: "La conversación con el coach.",
       },
       nutrition: {
         label: "Nutrición",
-        description:
-          "Presupuesto calórico, macros, agua y energía quemada. Añade comida por búsqueda, foto, quick add con IA o código.",
+        description: "Presupuesto, agua y comidas del día.",
       },
       progress: {
         label: "Progreso",
-        description:
-          "Nivel XP, stats del mes, tendencia de volumen, métricas corporales, hitos y récords personales (1RM).",
+        description: "Nivel, medallas y récords.",
       },
       social: {
         label: "Social",
-        description:
-          "Feed de 24 h, amigos, reacciones y clasificaciones entre amigos o globales.",
+        description: "Feed y amigos.",
       },
       students: {
         label: "Alumnos",
-        description:
-          "Modo entrenador: recuperación, nutrición del día y rutinas de tus atletas.",
+        description: "La ficha de un alumno.",
       },
       profile: {
         label: "Perfil",
-        description:
-          "Datos, métricas, metas, nutrición, apariencia y cuenta.",
+        description: "Tus datos y la cuenta.",
       },
     },
   },
   how: {
-    eyebrow: "Empezar",
-    title: "De la cuenta al primer entreno",
-    subtitle:
-      "FORGEN es una app móvil. La web es tu puerta: cuenta, planes y descarga.",
+    eyebrow: "Cómo empezar",
+    title: "De la tienda al primer entreno",
+    subtitle: "Cuatro pasos. El primero es descargar la app.",
     steps: [
       {
+        title: "Descarga la app",
+        description: "Google Play o App Store. En el teléfono, el enlace te lleva directo a la tienda.",
+      },
+      {
         title: "Crea tu cuenta",
-        description:
-          "Email, Google o Apple. Elige idioma, métricas, objetivos y si entrenas gym, running o HYROX.",
+        description: "Email, Google o Apple. Es la misma cuenta en la app y en esta web.",
       },
       {
-        title: "Entrena o registra comida",
-        description:
-          "Inicia una rutina, un entreno libre o una sesión GPS. Añade comida por búsqueda, texto, voz o —según plan— código de barras y foto.",
+        title: "Configura tus objetivos",
+        description: "Idioma, métricas y si entrenas gym, running o HYROX.",
       },
       {
-        title: "Mide y comparte",
-        description:
-          "XP, PRs, mapa de recuperación y rankings. El Coach IA usa tu historial real, no un cuestionario genérico.",
+        title: "Empieza",
+        description: "Tu primera rutina, una sesión con GPS o la comida del día.",
       },
     ],
   },
   modes: {
-    eyebrow: "Tres modos de sistema",
-    title: "Gym, HYROX y running — sin mezclarlos mal",
-    subtitle:
-      "Las rutinas de HYROX y Runner son de sistema: no gastan tu cupo de rutinas guardadas.",
+    eyebrow: "Cómo entrenas",
+    title: "Gym, HYROX o running",
+    subtitle: "Tres sesiones distintas. La eliges al configurar la app.",
     items: [
       {
         title: "Gym",
         description:
-          "Rutinas propias o sugeridas, sesión en vivo con series, peso, reps y RIR, temporizador de descanso y cambio a un ejercicio similar.",
+          "Rutina propia o sugerida, en vivo: peso, reps y temporizador de descanso.",
       },
       {
         title: "HYROX",
         description:
-          "Tres programas de sistema (Prep, Build y Race) con splits y estándares de estación para llegar al race day con estructura.",
+          "Programas Prep, Build y Race, con splits y el estándar de cada estación.",
       },
       {
         title: "Running",
         description:
-          "Correr o caminar con GPS: mapa, ritmo, splits y desnivel. También sesión en cinta, integrada al diario de kcal.",
-      },
-    ],
-  },
-  details: {
-    eyebrow: "Detalle de producto",
-    title: "Lo que usas cada sesión",
-    subtitle:
-      "No es un contador de series con un chat pegado. El día a día está pensado para entrenar de verdad.",
-    items: [
-      {
-        title: "Mapa de recuperación",
-        description:
-          "Estimación de fatiga por grupo muscular (~48 h) en el hub de entrenar y en la vista de un alumno.",
-      },
-      {
-        title: "IA en el entreno",
-        description:
-          "El Coach genera rutinas y responde con tu historial. En Gymrat y Pro, la IA proactiva sugiere pesos y reps al iniciar la sesión.",
-      },
-      {
-        title: "Nutrición del día",
-        description:
-          "Presupuesto desde tu TDEE, macros, agua y kcal de entrenos FORGEN. Búsqueda, quick-add con IA, voz y manual; barcode en Gymrat; foto en Gymrat Pro.",
-      },
-      {
-        title: "Progreso jugable",
-        description:
-          "Niveles y XP, rachas, hitos (volumen, distancia, kcal, entrenos) y récords con estimación de 1RM.",
-      },
-      {
-        title: "Offline",
-        description:
-          "Descarga el catálogo y entrena sin red; la sesión se sincroniza al volver. Coach, comida, social y progreso necesitan conexión.",
-      },
-      {
-        title: "Salud y comunidad",
-        description:
-          "Importa peso/grasa y exporta entrenos a Apple Salud o Health Connect. Amigos, feed, push y leaderboards (nivel, volumen, distancia, HYROX y más).",
+          "Correr o caminar con GPS: mapa, ritmo, splits y desnivel. También en cinta.",
       },
     ],
   },
   faq: {
     eyebrow: "Preguntas",
-    title: "Antes de descargar",
+    title: "Detalles",
     items: [
       {
         q: "¿FORGEN es gratis?",
-        a: "Sí. El plan Gratuito cubre entrenar, nutrición esencial, progreso, social y Coach IA con 5 mensajes al día y hasta 10 rutinas. Gymrat y Gymrat Pro ampliarán límites cuando los pagos in-app estén activos; hoy puedes usar FORGEN en gratuito.",
+        a: "Sí. Hoy todas las cuentas usan el plan Gratuito: entrenar, nutrición esencial, progreso, social y Coach IA (5 mensajes al día y hasta 10 rutinas).",
+      },
+      {
+        q: "¿Ya puedo pagar Gymrat o Gymrat Pro?",
+        a: "Todavía no. Los precios de esa sección son de referencia: 4,99 y 9,99 USD al mes. Cuando el pago in-app esté activo, esos planes amplían los límites.",
       },
       {
         q: "¿Necesito una API key de OpenAI?",
@@ -338,8 +291,16 @@ const es: Dictionary = {
         a: "No. Las rutinas de sistema HYROX (Prep, Build, Race) y Runner no consumen tu cupo de 10 / 20 / 50 rutinas guardadas.",
       },
       {
+        q: "¿Puedo entrenar sin internet?",
+        a: "Puedes descargar el catálogo y hacer la sesión sin red; se sincroniza al volver. Coach, comida, social y progreso necesitan conexión.",
+      },
+      {
+        q: "¿Se conecta con Apple Salud o Health Connect?",
+        a: "Si lo autorizas, FORGEN lee peso y grasa corporal y escribe entrenos, distancia y calorías activas.",
+      },
+      {
         q: "¿Hay iOS?",
-        a: "La app está construida para Android e iOS. Android está en Google Play; iOS llega con TestFlight / App Store.",
+        a: "Sí. FORGEN está en Google Play y en el App Store (iPhone y iPad).",
       },
       {
         q: "¿Puedo borrar mi cuenta?",
@@ -348,54 +309,53 @@ const es: Dictionary = {
     ],
   },
   features: {
-    title: "No es solo un contador de series",
-    subtitle:
-      "Entrenamiento, comida, progreso, social e IA — gym, running y HYROX.",
+    title: "Qué puedes hacer",
+    subtitle: "Seis piezas. Cada una cubre un trabajo distinto.",
     items: [
       {
         id: "train",
-        title: "Gym, carrera y HYROX",
+        title: "La sesión",
         description:
-          "Más de 1.300 ejercicios. Rutinas propias o sugeridas, sesión en vivo, cardio con GPS y estaciones HYROX.",
+          "Registras series, peso, reps, RIR y el descanso. Una rutina propia o la sugerida para hoy.",
       },
       {
         id: "coach",
         title: "Coach IA",
         description:
-          "Rutinas, consejos y alimentación con tu historial y métricas en tiempo real. Límites diarios según plan.",
+          "Pide una rutina o un ajuste. Responde con tu historial, no con un formulario genérico.",
       },
       {
         id: "nutrition",
-        title: "Nutrición e hidratación",
+        title: "Nutrición",
         description:
-          "Presupuesto calórico, macros, agua y kcal de tus entrenos. Búsqueda, voz, quick-add; barcode y foto según plan.",
+          "Presupuesto del día, macros y agua. Añades comida por búsqueda, texto o voz.",
       },
       {
         id: "progress",
-        title: "Progreso que se siente",
+        title: "Progreso",
         description:
-          "XP y rangos, PRs, hitos, volumen semanal y mapa de recuperación muscular.",
+          "Nivel, rachas y récords. Un mapa marca qué músculos siguen fatigados.",
       },
       {
         id: "social",
-        title: "Comunidad real",
+        title: "Amigos",
         description:
-          "Amigos, feed, PRs compartidos, avisos push y leaderboards — también de HYROX.",
+          "Un feed de 24 h y un aviso cuando alguien de tu círculo termina de entrenar.",
       },
       {
         id: "trainer",
         title: "Modo entrenador",
         description:
-          "En Gymrat Pro: alumnos, su recuperación, nutrición del día y rutinas que tú les asignas.",
+          "Asignas rutinas y ves cómo van tus alumnos. Llega con Gymrat Pro.",
       },
     ],
   },
   pricing: {
-    title: "Elige tu plan",
+    title: "Planes",
     subtitle:
-      "Empieza gratis. Gymrat y Gymrat Pro están definidos en la app; el cobro in-app se activará pronto.",
-    note: "Precios de referencia en la app: Gymrat 4,99 USD/mes y Gymrat Pro 9,99 USD/mes. Mientras el pago in-app no esté activo, todas las cuentas entran en Gratuito.",
-    popular: "Popular",
+      "Hoy entras gratis. Gymrat y Gymrat Pro se podrán pagar más adelante: aquí ves qué incluirán y el precio de referencia.",
+    soon: "Próximamente",
+    reference: "Precio de referencia",
     plans: {
       free: {
         name: "Gratuito",
@@ -422,7 +382,7 @@ const es: Dictionary = {
           "Color de acento personalizable",
           "Código de barras para comida",
         ],
-        cta: "Unirse a la lista",
+        cta: "Próximamente",
       },
       proPlus: {
         name: "Gymrat Pro",
@@ -436,14 +396,14 @@ const es: Dictionary = {
           "Detectar calorías en la comida con fotos",
           "Modo entrenador (alumnos)",
         ],
-        cta: "Unirse a la lista",
+        cta: "Próximamente",
       },
     },
   },
   download: {
     title: "Descarga FORGEN",
-    subtitle: "App móvil para Android. iOS próximamente (TestFlight / App Store).",
-    appStoreSoon: "App Store (pronto)",
+    subtitle: "App móvil para Android e iOS. Descárgala en Google Play o en el App Store.",
+    appStore: "App Store",
     hasAccount: "¿Ya tienes cuenta?",
     signInLink: "Inicia sesión",
     sameEmail: "con el mismo email que en la app.",
@@ -451,15 +411,15 @@ const es: Dictionary = {
   cta: {
     title: "¿Listo para empezar?",
     subtitle:
-      "Crea tu cuenta y descarga FORGEN. Empieza gratis en Android.",
+      "Descarga FORGEN y crea tu cuenta. Empieza gratis en Android e iOS.",
     createAccount: "Crear cuenta",
     downloadApp: "Descargar app",
   },
   leaderboards: {
     eyebrow: "Comunidad",
-    title: "Clasificaciones globales",
+    title: "Rankings en vivo",
     subtitle:
-      "Compite con atletas de todo el mundo. Los mismos rankings que en la app.",
+      "La comunidad de la app: compites con tus amigos y con el resto, en la misma tabla.",
     loading: "Cargando ranking…",
     empty: "Aún no hay datos en este ranking. ¡Sé el primero en entrenar!",
     yourPosition: "Tu posición",
@@ -502,7 +462,7 @@ const es: Dictionary = {
 const en: Dictionary = {
   nav: {
     app: "App",
-    how: "How it works",
+    how: "Get started",
     features: "Features",
     pricing: "Plans",
     download: "Download",
@@ -516,8 +476,9 @@ const en: Dictionary = {
     eyebrow: "Mobile fitness app",
     title: "Forge Your Potential",
     subtitle:
-      "Train, eat, and track progress with AI and community. Gym, GPS running, and HYROX — in one place.",
-    proof: "Android · English & Spanish · 1,300+ exercises with demos",
+      "FORGEN is the app for training, logging what you eat, and seeing if you're moving forward.",
+    audience: "For people who lift, prep for HYROX, or run with GPS.",
+    proof: "Android & iOS · English & Spanish",
     downloadCta: "Download app",
     signupCta: "Create web account",
   },
@@ -530,138 +491,95 @@ const en: Dictionary = {
   app: {
     eyebrow: "The app",
     title: "FORGEN in your pocket",
-    subtitle:
-      "Same account, same data. Train, nutrition, progress, social, students, and profile — in detail.",
+    subtitle: "The screens, section by section.",
     emptyScreenshots: "Screenshots for this section are coming soon.",
     groups: {
       train: {
         label: "Train",
-        description:
-          "Daily hub: streak, suggested session, routines, recovery map, and set logging. Catalog with 1,300+ exercises.",
+        description: "Streak, today's routine, and the open session.",
       },
       coach: {
         label: "AI Coach",
-        description:
-          "Ask for personalized routines, training tips, and nutrition ideas. The coach uses your history and real-time metrics.",
+        description: "The conversation with the coach.",
       },
       nutrition: {
         label: "Nutrition",
-        description:
-          "Calorie budget, macros, water, and energy burned. Add food by search, photo, AI quick add, or barcode.",
+        description: "Budget, water, and today's meals.",
       },
       progress: {
         label: "Progress",
-        description:
-          "XP level, monthly stats, volume trend, body metrics, milestones, and personal records (1RM).",
+        description: "Level, medals, and records.",
       },
       social: {
         label: "Social",
-        description:
-          "24h feed, friends, reactions, and friends or global leaderboards.",
+        description: "Feed and friends.",
       },
       students: {
         label: "Students",
-        description:
-          "Trainer mode: recovery, daily nutrition, and routines for your athletes.",
+        description: "A student's profile.",
       },
       profile: {
         label: "Profile",
-        description:
-          "Details, metrics, goals, nutrition, appearance, and account.",
+        description: "Your details and account.",
       },
     },
   },
   how: {
     eyebrow: "Get started",
-    title: "From account to first workout",
-    subtitle:
-      "FORGEN is a mobile app. The website is your front door: account, plans, and download.",
+    title: "From the store to your first workout",
+    subtitle: "Four steps. The first one is downloading the app.",
     steps: [
       {
+        title: "Download the app",
+        description: "Google Play or the App Store. On your phone, the link opens the store directly.",
+      },
+      {
         title: "Create your account",
-        description:
-          "Email, Google, or Apple. Set language, metrics, goals, and whether you train gym, running, or HYROX.",
+        description: "Email, Google, or Apple. The same account works in the app and on this site.",
       },
       {
-        title: "Train or log food",
-        description:
-          "Start a routine, a free session, or GPS cardio. Add food by search, text, voice, or — on paid plans — barcode and photo.",
+        title: "Set your goals",
+        description: "Language, units, and whether you train gym, running, or HYROX.",
       },
       {
-        title: "Measure and share",
-        description:
-          "XP, PRs, recovery map, and rankings. The AI Coach uses your real history, not a generic quiz.",
+        title: "Start",
+        description: "Your first routine, a GPS session, or today's food.",
       },
     ],
   },
   modes: {
-    eyebrow: "Three system modes",
-    title: "Gym, HYROX, and running — kept distinct",
-    subtitle:
-      "HYROX and Runner system routines do not count toward your saved-routine limit.",
+    eyebrow: "How you train",
+    title: "Gym, HYROX, or running",
+    subtitle: "Three different sessions. You pick one when you set up the app.",
     items: [
       {
         title: "Gym",
         description:
-          "Your own or suggested routines, live session with sets, weight, reps and RIR, rest timer, and swap to a similar exercise.",
+          "Your own or a suggested routine, live: weight, reps, and a rest timer.",
       },
       {
         title: "HYROX",
         description:
-          "Three system programs (Prep, Build, and Race) with station splits and standards so race day has structure.",
+          "Prep, Build, and Race programs, with splits and the standard for each station.",
       },
       {
         title: "Running",
         description:
-          "Run or walk with GPS: map, pace, splits, and elevation. Treadmill sessions too, tied into your daily kcal.",
-      },
-    ],
-  },
-  details: {
-    eyebrow: "Product detail",
-    title: "What you use every session",
-    subtitle:
-      "Not a set counter with a chatbot taped on. The daily flow is built for real training.",
-    items: [
-      {
-        title: "Recovery map",
-        description:
-          "Per-muscle fatigue estimate (~48 h) on the train hub and on a student’s profile.",
-      },
-      {
-        title: "AI in the workout",
-        description:
-          "The Coach builds routines and answers from your history. On Gymrat and Pro, proactive AI suggests weights and reps when you start a session.",
-      },
-      {
-        title: "Daily nutrition",
-        description:
-          "Budget from your TDEE, macros, water, and kcal from FORGEN workouts. Search, AI quick-add, voice, and manual; barcode on Gymrat; photo on Gymrat Pro.",
-      },
-      {
-        title: "Playable progress",
-        description:
-          "Levels and XP, streaks, milestones (volume, distance, kcal, workouts), and PRs with 1RM estimates.",
-      },
-      {
-        title: "Offline",
-        description:
-          "Download the catalog and train without a network; the session syncs when you’re back. Coach, food, social, and progress need a connection.",
-      },
-      {
-        title: "Health & community",
-        description:
-          "Import weight/body fat and export workouts to Apple Health or Health Connect. Friends, feed, push, and leaderboards (level, volume, distance, HYROX, and more).",
+          "Run or walk with GPS: map, pace, splits, and elevation. Treadmill too.",
       },
     ],
   },
   faq: {
     eyebrow: "FAQ",
-    title: "Before you download",
+    title: "Details",
     items: [
       {
         q: "Is FORGEN free?",
-        a: "Yes. Free covers training, essential nutrition, progress, social, and AI Coach with 5 messages/day and up to 10 routines. Gymrat and Gymrat Pro will expand limits when in-app purchases go live; today every account starts on Free.",
+        a: "Yes. Today every account uses Free: training, essential nutrition, progress, social, and AI Coach (5 messages/day, up to 10 routines).",
+      },
+      {
+        q: "Can I pay for Gymrat or Gymrat Pro yet?",
+        a: "Not yet. The prices in that section are a reference: $4.99 and $9.99 per month. When in-app purchases go live, those plans raise the limits.",
       },
       {
         q: "Do I need my own OpenAI API key?",
@@ -676,8 +594,16 @@ const en: Dictionary = {
         a: "No. HYROX system routines (Prep, Build, Race) and Runner do not use your 10 / 20 / 50 saved-routine slots.",
       },
       {
+        q: "Can I train offline?",
+        a: "You can download the catalog and log a session without a network; it syncs when you're back. Coach, food, social, and progress need a connection.",
+      },
+      {
+        q: "Does it connect to Apple Health or Health Connect?",
+        a: "If you allow it, FORGEN reads weight and body fat and writes workouts, distance, and active calories.",
+      },
+      {
         q: "Is there iOS?",
-        a: "The app is built for Android and iOS. Android is on Google Play; iOS is coming via TestFlight / App Store.",
+        a: "Yes. FORGEN is on Google Play and on the App Store (iPhone and iPad).",
       },
       {
         q: "Can I delete my account?",
@@ -686,54 +612,53 @@ const en: Dictionary = {
     ],
   },
   features: {
-    title: "Not just a set counter",
-    subtitle:
-      "Training, food, progress, social, and AI — gym, running, and HYROX.",
+    title: "What you can do",
+    subtitle: "Six pieces. Each one covers a different job.",
     items: [
       {
         id: "train",
-        title: "Gym, running & HYROX",
+        title: "The session",
         description:
-          "1,300+ exercises. Your own or suggested routines, live sessions, GPS cardio, and HYROX stations.",
+          "Log sets, weight, reps, RIR, and rest. Your own routine, or the one suggested for today.",
       },
       {
         id: "coach",
         title: "AI Coach",
         description:
-          "Ask for personalized routines, training advice, and nutrition ideas using your live metrics. Daily limits by plan.",
+          "Ask for a routine or a tweak. It answers from your history, not a generic form.",
       },
       {
         id: "nutrition",
-        title: "Nutrition & hydration",
+        title: "Nutrition",
         description:
-          "Calorie budget, macros, water, and kcal from your workouts. Search, voice, quick-add; barcode and photo by plan.",
+          "A daily budget, macros, and water. Add food by search, text, or voice.",
       },
       {
         id: "progress",
-        title: "Progress that sticks",
+        title: "Progress",
         description:
-          "XP and ranks, PRs, milestones, weekly volume, and a muscle recovery map.",
+          "Level, streaks, and records. A map shows which muscles are still fatigued.",
       },
       {
         id: "social",
-        title: "Real community",
+        title: "Friends",
         description:
-          "Friends, feed, shared PRs, push alerts, and leaderboards — including HYROX.",
+          "A 24-hour feed and a ping when someone in your circle finishes a workout.",
       },
       {
         id: "trainer",
         title: "Trainer mode",
         description:
-          "On Gymrat Pro: students, their recovery, daily nutrition, and routines you assign.",
+          "Assign routines and see how your students are doing. It arrives with Gymrat Pro.",
       },
     ],
   },
   pricing: {
-    title: "Choose your plan",
+    title: "Plans",
     subtitle:
-      "Start free. Gymrat and Gymrat Pro are defined in the app; in-app billing will go live soon.",
-    note: "Reference prices in the app: Gymrat $4.99/month and Gymrat Pro $9.99/month. Until in-app purchases are live, every account starts on Free.",
-    popular: "Popular",
+      "You start free today. Gymrat and Gymrat Pro can be paid for later: here is what they will include, and the reference price.",
+    soon: "Coming soon",
+    reference: "Reference price",
     plans: {
       free: {
         name: "Free",
@@ -760,7 +685,7 @@ const en: Dictionary = {
           "Custom accent color",
           "Food barcode scanning",
         ],
-        cta: "Join the waitlist",
+        cta: "Coming soon",
       },
       proPlus: {
         name: "Gymrat Pro",
@@ -774,14 +699,14 @@ const en: Dictionary = {
           "Detect calories in food with photos",
           "Trainer mode (students)",
         ],
-        cta: "Join the waitlist",
+        cta: "Coming soon",
       },
     },
   },
   download: {
     title: "Download FORGEN",
-    subtitle: "Mobile app for Android. iOS coming soon (TestFlight / App Store).",
-    appStoreSoon: "App Store (soon)",
+    subtitle: "Mobile app for Android and iOS. Get it on Google Play or the App Store.",
+    appStore: "App Store",
     hasAccount: "Already have an account?",
     signInLink: "Sign in",
     sameEmail: "with the same email as in the app.",
@@ -789,15 +714,15 @@ const en: Dictionary = {
   cta: {
     title: "Ready to start?",
     subtitle:
-      "Create your account and download FORGEN. Start free on Android.",
+      "Download FORGEN and create your account. Start free on Android and iOS.",
     createAccount: "Create account",
     downloadApp: "Download app",
   },
   leaderboards: {
     eyebrow: "Community",
-    title: "Global leaderboards",
+    title: "Live rankings",
     subtitle:
-      "Compete with athletes worldwide. The same rankings as in the app.",
+      "The in-app community: you compete with friends and with everyone else, on the same board.",
     loading: "Loading rankings…",
     empty: "No data in this ranking yet. Be the first to train!",
     yourPosition: "Your position",

@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { useDictionary } from "@/components/locale-provider";
 import { AppleIcon, GooglePlayIcon } from "@/components/store-icons";
-import { PLAY_STORE_URL } from "@/lib/download";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/download";
 
 export function DownloadSection() {
   const dict = useDictionary();
   const playStore = PLAY_STORE_URL;
-  const appStore = process.env.NEXT_PUBLIC_APP_STORE_URL ?? "#";
+  const appStore = APP_STORE_URL;
 
   return (
     <section id="download" className="border-t border-forge-border bg-forge-navy/40 px-6 py-20">
@@ -29,10 +29,10 @@ export function DownloadSection() {
             href={appStore}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-w-[200px] items-center justify-center gap-2 rounded-xl border border-forge-border bg-forge-card px-6 py-4 font-semibold text-forge-muted transition hover:border-forge-grey"
+            className="inline-flex min-w-[200px] items-center justify-center gap-2 rounded-xl border border-forge-border bg-forge-card px-6 py-4 font-semibold text-forge-text transition hover:border-forge-blue"
           >
             <AppleIcon className="h-7 w-7" />
-            {dict.download.appStoreSoon}
+            {dict.download.appStore}
           </a>
         </div>
         <p className="mt-6 text-sm text-forge-muted">

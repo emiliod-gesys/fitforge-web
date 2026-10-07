@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { AppleIcon, GooglePlayIcon } from "@/components/store-icons";
-import { getStoreUrl, PLAY_STORE_URL } from "@/lib/download";
+import { APP_STORE_URL, getStoreUrl, PLAY_STORE_URL } from "@/lib/download";
 
 export const metadata = {
   title: "Descargar",
@@ -18,7 +18,7 @@ export default async function DownloadPage() {
   }
 
   const playStore = PLAY_STORE_URL;
-  const appStore = process.env.NEXT_PUBLIC_APP_STORE_URL ?? "#";
+  const appStore = APP_STORE_URL;
 
   return (
     <div className="mx-auto max-w-lg px-6 py-24 text-center">

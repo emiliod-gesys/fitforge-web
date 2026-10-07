@@ -49,6 +49,9 @@ export function Hero() {
           <p className="mt-5 max-w-xl animate-fade-up text-lg text-forge-muted md:text-xl lg:mx-0 mx-auto">
             {dict.hero.subtitle}
           </p>
+          <p className="mt-3 max-w-xl text-base font-medium text-forge-text lg:mx-0 mx-auto">
+            {dict.hero.audience}
+          </p>
           <p className="mt-3 text-sm text-forge-muted/80">{dict.hero.proof}</p>
           <div className="mt-8 flex animate-fade-up flex-wrap items-center justify-center gap-4 lg:justify-start">
             <Link
