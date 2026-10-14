@@ -10,8 +10,8 @@ type Section = {
   paragraphs: string[];
 };
 
-const UPDATED = "22 de septiembre de 2026";
-const UPDATED_EN = "September 22, 2026";
+const UPDATED = "13 de octubre de 2026";
+const UPDATED_EN = "October 13, 2026";
 const CONTACT = "support@forgen.app";
 
 function privacyEs(): Section[] {
@@ -31,7 +31,7 @@ function privacyEs(): Section[] {
         "Verificación de seguridad: cuando está activo Cloudflare Turnstile, se procesa un token de captcha para reducir abuso en registro e inicio de sesión.",
         "Datos de entrenamiento y salud que tú registras: entrenos, series, peso, repeticiones, RIR, descanso, rutinas, métricas corporales, nutrición, agua, progreso, PRs, mapa de recuperación muscular y actividad social (amigos, feed, clasificaciones, modo alumnos).",
         "Location / ubicación: si inicias una carrera o caminata outdoor, FORGEN accede a location (ubicación precisa y aproximada, GPS) del dispositivo. Ver la sección 3.",
-        "Cámara, fotos y micrófono: si usas código de barras, foto de comida, ejercicios personalizados o dictado de comidas, accedemos a cámara, galería o audio solo para esa función.",
+        "Cámara, fotos y micrófono: si usas código de barras, foto de comida, ejercicios personalizados, dictado de comidas o la foto opcional al terminar un entreno, accedemos a la cámara, la galería o el micrófono solo para esa función. La foto del entreno es opcional. Si la tomas, la guardamos con ese entreno y la mostramos en la publicación del feed para ti y tus amigos. Si la omites, no se guarda ninguna foto. La foto se elimina cuando se borra esa publicación, también cuando la publicación caduca a las 24 horas.",
         "Apple Salud / Health Connect (si lo autorizas): podemos leer peso y grasa corporal, y escribir entrenos, distancia y calorías activas.",
         "Datos técnicos: identificadores de dispositivo, registros de uso, idioma, zona horaria y, si activas notificaciones, tokens de Firebase Cloud Messaging para avisos con la app cerrada (p. ej. cuando un amigo entrena).",
         "Pagos: si contratas un plan de pago, el procesador de pagos (p. ej. Stripe o las tiendas de aplicaciones) trata los datos de facturación. Nosotros no almacenamos números completos de tarjeta.",
@@ -72,7 +72,7 @@ function privacyEs(): Section[] {
         "Proveedores que nos ayudan a operar el servicio, bajo contrato: alojamiento, base de datos y autenticación (Supabase), notificaciones push (Firebase), captcha (Cloudflare Turnstile), infraestructura web (Vercel) y, en su caso, pagos.",
         "Proveedores de IA que procesan las solicitudes del Coach o de foto de comida para devolver una respuesta. No usamos esos envíos para anuncios de terceros.",
         "Catálogo de ejercicios: parte del contenido de ejercicios, imágenes o demos puede provenir de fuentes públicas licenciadas (p. ej. wger, CC-BY-SA) además del catálogo propio de FORGEN.",
-        "Otros usuarios: lo que elijas hacer público o compartir (nombre, avatar, PRs, posts del feed, posición en rankings, datos visibles para un entrenador si aceptas ser alumno).",
+        "Otros usuarios: lo que elijas hacer público o compartir (nombre, avatar, PRs, publicaciones del feed, la foto opcional del entreno en una publicación de entreno completado, posición en rankings y datos visibles para un entrenador si aceptas ser alumno).",
         "Autoridades si la ley lo exige. No vendemos tu información personal.",
       ],
     },
@@ -129,7 +129,7 @@ function privacyEn(): Section[] {
         "Security verification: when Cloudflare Turnstile is enabled, a captcha token is processed to reduce abuse on sign-up and sign-in.",
         "Training and health data you log: workouts, sets, weight, reps, RIR, rest timer, routines, body metrics, nutrition, water, progress, PRs, muscle recovery map, and social activity (friends, feed, leaderboards, student mode).",
         "Location: if you start an outdoor run or walk, FORGEN accesses location (precise and approximate GPS location) on the device. See section 3.",
-        "Camera, photos, and microphone: if you use barcode scan, food photos, custom exercises, or voice food logging, we access camera, photo library, or microphone only for that feature.",
+        "Camera, photos, and microphone: if you use barcode scan, food photos, custom exercises, voice food logging, or the optional photo at the end of a workout, we access the camera, photo library, or microphone only for that feature. The workout photo is optional. If you take it, we store it with that workout and show it on the feed post for you and your friends. If you skip it, no photo is saved. The photo is deleted when that post is deleted, including when the post expires after 24 hours.",
         "Apple Health / Health Connect (if you grant access): we may read weight and body fat, and write workouts, distance, and active calories.",
         "Technical data: device identifiers, usage logs, language, time zone, and, if you enable notifications, Firebase Cloud Messaging tokens for alerts when the app is closed (e.g. when a friend trains).",
         "Payments: if you buy a paid plan, the payment processor (e.g. Stripe or the app stores) handles billing data. We do not store full card numbers.",
@@ -170,7 +170,7 @@ function privacyEn(): Section[] {
         "Service providers under contract: hosting, database, and authentication (Supabase), push notifications (Firebase), captcha (Cloudflare Turnstile), web infrastructure (Vercel), and payments where applicable.",
         "AI providers that process Coach or food-photo requests to return a response. We do not use those submissions for third-party ads.",
         "Exercise catalog: some exercise content, images, or demos may come from public licensed sources (e.g. wger, CC-BY-SA) in addition to FORGEN’s own catalog.",
-        "Other users: what you choose to make public or share (name, avatar, PRs, feed posts, ranking position, data visible to a trainer if you accept being a student).",
+        "Other users: what you choose to make public or share (name, avatar, PRs, feed posts, the optional workout photo on a completed-workout post, ranking position, and data visible to a trainer if you accept being a student).",
         "Authorities if required by law. We do not sell your personal information.",
       ],
     },
