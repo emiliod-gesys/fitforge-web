@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AmbientPhoto } from "@/components/ambient-photo";
 import { AppScreenshotsSection } from "@/components/app-screenshots-section";
 import { CatalogHighlight } from "@/components/catalog-highlight";
+import { ComparisonTable } from "@/components/comparison-table";
 import { DownloadSection } from "@/components/download-section";
 import { FaqSection } from "@/components/faq-section";
 import { FeatureGrid } from "@/components/feature-grid";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <AppScreenshotsSection />
       <HowItWorks />
       <PricingSection />
+      <ComparisonTable />
       <DownloadSection />
       <LeaderboardSection />
       <section className="relative overflow-hidden border-t border-forge-border bg-forge-black px-6 py-20 md:py-28">
